@@ -2,40 +2,39 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
 
 
-class ProjectUserManager(BaseUserManager):
+class StudentManager(BaseUserManager):
 
-    def create_user(self, student_number, email, password=None, **extra_fields):
+    def create_user(self, username, email, password=None, **extra_fields):
         if not email:
             raise ValueError('فیلد ایمیل اجباریست')
-        if not student_number:
+        if not username:
             raise ValueError('فیلید شماره دانشجویی اجباریست')
 
         user = self.model(
             email=self.normalize_email(email),
-            student_number=student_number,
+            username=username,
             **extra_fields
         )
-        extra_fields.setdefault('is_student', False)
-        extra_fields.setdefault('is_master', False)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, student_number, email, password=None, **extra_fields):
+    def create_superuser(self, username, email, password=None, **extra_fields):
         user = self.create_user(
             email=self.normalize_email(email),
-            student_number=student_number,
+            username=username,
             password=password,
             **extra_fields
         )
-        extra_fields.setdefault('is_student', True)
-        extra_fields.setdefault('is_master', True)
+        user.is_master = True
+        user.is_student = True
+        user.is_superuser = True
         user.save(using=self._db)
         return user
 
 
-class ProjectUser(AbstractBaseUser):
-    student_number = models.IntegerField(unique=True)
+class Student(AbstractBaseUser):
+    username = models.IntegerField(unique=True)
     email = models.EmailField(max_length=255)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
@@ -43,19 +42,20 @@ class ProjectUser(AbstractBaseUser):
     state = models.CharField(max_length=255, blank=True)
     field = models.CharField(max_length=255, blank=True)
     university = models.CharField(max_length=255, blank=True)
+    profile_image = models.ImageField(upload_to="%Y/%m/%d", blank=True)
     is_master = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-
+    is_superuser = models.BooleanField(default=False)
     EMAIL_FIELD = 'email'
-    USERNAME_FIELD = 'student_number'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = [
         'email',
     ]
-    objects = ProjectUserManager()
+    objects = StudentManager()
 
     def __str__(self):
-        return str(self.student_number)
+        return str(self.username)
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
