@@ -16,7 +16,7 @@
             <input id="tab-2" type="radio" name="tab"
                    class="sign-up"><label for="tab-2" class="tab">SignUp</label>
             <div class="login-form">
-                <form class="sign-in-htm" action="{%url 'user:login'%}" method="POST" novalidate>
+                <form class="sign-in-htm" action="{%url 'signin' %}" method="POST" novalidate>
                     {% csrf_token %}
                 <div class="group">
                         <label for="user" class="label">Username</label>

@@ -5,8 +5,9 @@ from django.views.generic import TemplateView
 
 app_name = "user"
 urlpatterns = [
-     path('login/', v.sign_in, name="login"),
-     path('logout/', v.sign_out, name="logout"),
+     path('signin/', v.sign_in, name="signin"),
+     path('signout/', v.sign_out, name="signout"),
+     path('change_password/', v.change_password, name="change_password"),
      path('test/', TemplateView.as_view(template_name='index.html'), name='test')
 
 ]
