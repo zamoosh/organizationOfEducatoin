@@ -12,5 +12,5 @@ def sign_in(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user=user)
-                return redirect("user:test")
-    return render(request, template_name="signin_test.html" , context={"form":form})
+                return redirect("test")
+    return render(request, template_name="user/signin_test.html" , context={"form":form})
