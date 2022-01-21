@@ -184,7 +184,7 @@ login section
 */
 .login-page {
     margin: 10px 0;
-    background: url("./../images/main_page/tehran_university.jpg") no-repeat center center;
+    background: url("./../img/main_page/tehran_university.jpg") no-repeat center center;
     background-size: cover;
 }
 
