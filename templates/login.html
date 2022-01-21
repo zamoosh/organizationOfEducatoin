@@ -1,73 +1,68 @@
 {% extends "base.html" %}{% load static %}
 {% block title %}login page{% endblock %}
-{% block css %}
-    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-    <link rel="stylesheet" href="{% static "user/css/login.css" %}">
-{% endblock %}
+{% block bootstrap %} {% endblock %}
 
 {% block body %}
-    {% if error %}
-    {{ error }}
-    {% endif %}
+{#    {% if error %}#}
+{#    {{ error }}#}
+{#    {% endif %}#}
+    <body class="login-page">
     <div class="login-wrap">
         <div class="login-html">
-            <input id="tab-1" type="radio" name="tab"
-                   class="sign-in" checked><label for="tab-1" class="tab">SignIn</label>
-            <input id="tab-2" type="radio" name="tab"
-                   class="sign-up"><label for="tab-2" class="tab">SignUp</label>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">ورود</label><input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">ثبت نام</label>
             <div class="login-form">
-                <form class="sign-in-htm" action="{%url 'user:login'%}" method="POST" novalidate>
+                <form class="sign-in-htm" action="{%url 'user:login'%}" method="POST" >
                     {% csrf_token %}
                 <div class="group">
-                        <label for="user" class="label">Username</label>
-                        <input id="user" type="text" class="input" name="username">
+                        <label for="user" class="label">شماره دانشجویی:</label>
+                        <input id="user" type="text" class="input btn" name="username">
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password" name="password">
+                        <label for="pass" class="label">رمز عبور</label>
+                        <input id="pass" type="password" class="input btn" data-type="password" name="password">
                     </div>
-                    <div class="group">
+                    <div class="group remind-me">
                         <input id="check" type="checkbox" class="check" checked name="check">
-                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        <label for="check"><span class="icon"></span>
+                            <span class="remind-me__text">مرا به خاطر بسپر</span>
+
+                        </label>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" value="Sign In">
+                        <input type="submit" class="button btn btn--transparent btn--bold" value="ورود">
                     </div>
                     <div class="hr"></div>
-                    <div class="foot-lnk">
-                        <a href="#">Forgot Password?</a>
+                    <div class="foot-lnk forgot-password">
+                        <a href="#">فراموشی رمز عبور</a>
                     </div>
                 </form>
-                <form class="sign-up-htm" action="" method="POST" novalidate>
+                <form class="sign-up-htm" action="" method="POST" >
                     {% csrf_token %}
                     <div class="group">
-                        <label for="user" class="label">Username</label>
-                        <input id="user" type="text" class="input" name="username">
+                        <label for="user" class="label">شماره دانشجویی:</label>
+                        <input id="user" type="text" class="input   btn" name="username">
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Email Address</label>
-                        <input id="pass" type="email" class="input" name="email">
+                        <label for="pass" class="label">ایمیل</label>
+                        <input id="pass" type="email" class="input  btn" name="email">
                     </div>
                     <div class="group">
-                        <label for="pass" class="label">Password</label>
-                        <input id="pass" type="password" class="input" data-type="password" name="password">
+                        <label for="pass" class="label">رمز عبور</label>
+                        <input id="pass" type="password" class="input btn" data-type="password" name="password">
                     </div>
                     <div class="group"
                     >
-                        <label for="pass" class="label">Repeat Password</label>
-                        <input id="pass" type="password" class="input" data-type="password" name="repeatPassword">
+                        <label for="pass" class="label">تکرار رمز عبور</label>
+                        <input id="pass" type="password" class="input btn" data-type="password" name="repeatPassword">
                     </div>
-                    <div class="group">
-                        <input type="submit" class="button" value="Sign Up">
-                    </div>
-                    <div class="hr"></div>
-                    <div class="foot-lnk">
-                        <label for="tab-1">Already Member?</label>
+                    <div class="group sign-up-button">
+                        <input type="submit" class="button btn btn--transparent btn--bold" value="ثبت نام">
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    </body>
 {% endblock %}
 
 {% block js %}

@@ -1,18 +1,18 @@
-<!DOCTYPE html>{% load static %}
-<html lang="en">
+<!DOCTYPE html >
+{% load static %}
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
-    <!-- site icon -->
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon"/>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"/>
-    <!-- Google Fonts Roboto -->
-    <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
-    {% block css %}{% endblock %}
+
+    {% block css %}
+        {% block bootstrap %}
+
+        {% endblock %}
+
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+
+    {% endblock %}
 </head>
 
 <body>
