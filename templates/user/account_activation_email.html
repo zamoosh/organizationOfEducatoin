@@ -1,0 +1,10 @@
+
+<body>
+{% autoescape off %}
+سلام{{ user.username }},
+
+لطفا رو این لینک کیلیک کن تا حساب کاربریت فعال بشه :
+
+http://{{ domain }}{% url 'user:activate' uidb64=uid token=token %}
+{% endautoescape %}
+</body>

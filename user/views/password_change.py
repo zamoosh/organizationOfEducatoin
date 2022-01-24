@@ -11,4 +11,4 @@ def change_password(request):
             return redirect('user:change_password')
     else:
         form = ChangePasswordForm(request.user)
-    return render(request, 'password_change_test.html', {'form': form})
+    return render(request, 'user/password_change_test.html', {'form': form})
