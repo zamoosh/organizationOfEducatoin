@@ -131,13 +131,13 @@ MEDIA_URL = 'img/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.Student'
 SITE_ID = 1
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'jafar0650developer@gmail.com'
-EMAIL_HOST_PASSWORD = '"3phzrG>\hE?3A;('
-EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'jafar0650developer@gmail.com'
+# EMAIL_HOST_PASSWORD = '"3phzrG>\hE?3A;('
+# EMAIL_PORT = 587
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

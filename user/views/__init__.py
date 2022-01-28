@@ -1,4 +1,10 @@
-from .signin import sign_in
+from .signin import Signin
 from .signout import sign_out
-from .password_change import change_password
-from .signup import Signup ,activate
+from .password_change import ChangePassword
+from .signup import Signup, activate
+from .forgot_password import (
+    ForgotPasswordView,
+    ForgotPasswordCompleteView,
+    ForgotPasswordConfirmView,
+    ForgotPasswordDoneView
+)
