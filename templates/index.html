@@ -1,10 +1,314 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "./base.html" %}{% load static %}
+{% block title %}home{% endblock %}
 
-</body>
-</html>
+{% block content %}
+
+
+    <!-- lesson section -->
+    <div class="container mt-5 p-5 lesson--section " id="swiper-lesson">
+        <h3 class="  lesson--section__title">دروس استاد</h3>
+        <div class="swiper">
+            <div class=" swiper-wrapper  ">
+                <!-- Slides -->
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+
+    </div>
+    <!-- end lesson section -->
+
+
+    <!-- notification section -->
+    <section class="container  notification--section" id="swiper-notification">
+        <div class=" my-5 text-center  align-content-center">
+            <div class=" px-6 notification-box">
+                <h3 class="notification-header">اطلاعیه ها</h3>
+
+                <div class="swiper  text-center ">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 1
+                            </div>
+                        </div>
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 2
+                            </div>
+                        </div>
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 3
+                            </div>
+                        </div>
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 4
+                            </div>
+                        </div>
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 5
+                            </div>
+                        </div>
+                        <div class="swiper-slide    ">
+                            <div class="notification">
+                                اطلاعیه 6
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- end notification section -->
+
+
+
+    <!-- article section -->
+    <section class="container  article--section">
+        <div class="row my-5 text-center  align-content-center">
+            <div class=" px-6 mb-5 mb-md-0 col-12  col-md-6 vertical-slider article-container " id="swiper-article-1">
+                <div class=" px-6 article-box">
+                    <h3 class="article-author">مقالات استاد</h3>
+                    <div class="swiper-button-container">
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="swiper  text-center ">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 1
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 2
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 3
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 4
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 5
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 6
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="swiper-button-container">
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+            <div class=" px-6 col-12 col-md-6 vertical-slider article-container " id="swiper-article-2">
+                <div class=" px-6 article-box">
+                    <h3 class="article-author">مقالات برتر</h3>
+                    <div class="swiper-button-container">
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="swiper  text-center ">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 1
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 2
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 3
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 4
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 5
+                                </div>
+                            </div>
+                            <div class="swiper-slide    ">
+                                <div class=" article">
+                                    مقاله 6
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="swiper-button-container">
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- end article section -->
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
