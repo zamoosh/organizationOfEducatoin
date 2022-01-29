@@ -1,0 +1,166 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}profile{% endblock %}
+
+
+
+
+
+{% block content %}
+    <div class="m-5 profile-page">
+
+        <form class=" container p-5 profile-container">
+            <div class="more-information__profile-md">
+                <div class="row mb-md-5 flex-md-row-reverse">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <input type="file" name="file" class="file-uploader" id="file-uploader">
+                            <label class="file-uploader-label" for="file-uploader">
+
+                                <div class="file-uploader-icon-container">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                            <div class="col-12 col-md-4 text-md-start ">
+                                <label for="inputPassword6" class="col-form-label">شماره دانشجویی</label>
+                            </div>
+                            <div class="col-12 col-md-8 text-md-end">
+                                <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                            </div>
+
+                        </div>
+                        <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                            <div class="col-12 col-md-4 text-md-start ">
+                                <label for="inputPassword6" class="col-form-label">نام و نام خانوادگی</label>
+                            </div>
+                            <div class="col-12 col-md-8 text-md-end">
+                                <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="more-information__profile">
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start ">
+                        <label for="inputPassword6" class="col-form-label">رشته تحصیلی</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">دانشگاه</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">ایمیل</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline" disabled
+                               value="repenter1380@gmail.com">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">استان محل سکونت</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">شهر محل سکونت</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label"> درس </label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start select-lesson__profile">
+                        <select class=" input w-100" aria-label="Default select example">
+                            <option selected>انتخاب درس</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="group text-center sign-up-button">
+                <input type="submit" class="button input input--transparent input--bold" value="ذخیره تغییرات">
+            </div>
+
+
+        </form>
+    </div>
+
+
+    <!-- sidebar -->
+
+
+    <!-- Modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action=" ">
+                        <div class="group d-flex flex-column  ">
+                            <label for="pass" class="label mb-2">ایمیل خود را وارد کنید</label>
+                            <input id="pass" type="email" class="input " name="email">
+                        </div>
+                        <div class="group text-center sign-up-button">
+                            <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+{% block testjs %}
+
+
+
+
+{% endblock %}
+
+
+
+
