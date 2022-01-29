@@ -151,9 +151,17 @@
             <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         {% endblock %}
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
-        <script src="{% static "js/index.js" %}" type="module"></script>
-        {% block testjs %}
-            {% endblock %}
+
+        {% block mainjs %}
+             <script src="{% static "js/index.js" %}" type="module"></script>
+        {% endblock %}
+
+
+
+
+
+
+
 
     {% endblock %}
     </body>
