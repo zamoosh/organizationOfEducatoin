@@ -4,13 +4,15 @@ export default function swiperSlider(DOMID, {
     loop = false,
     spaceBetween = 15,
     rows = 1,
-    delay = 2000
+    delay = 2000,
+    sliderNumbers = 1,
+
 }) {
-    new Swiper(`${DOMID} .swiper`, {
+    const swiper = new Swiper(`${DOMID} .swiper`, {
         direction,
         slidesPerView: slidesPerView[0],
         grid: {
-            rows: rows,
+            rows: sliderNumbers > slidesPerView[0] ? rows : 1,
         },
         spaceBetween,
 
@@ -34,22 +36,33 @@ export default function swiperSlider(DOMID, {
         },
         breakpoints: {
             768: {
-                slidesPerView: slidesPerView[1] ? slidesPerView[1] : slidesPerView[slidesPerView.length - 1],
-
+                slidesPerView: getSlidersPerViews(slidesPerView, 1),
+                grid: {
+                    rows: sliderNumbers > getSlidersPerViews(slidesPerView, 1) ? rows : 1,
+                }
 
             },
             992: {
-                slidesPerView: slidesPerView[2] ? slidesPerView[2] : slidesPerView[slidesPerView.length - 1],
+                slidesPerView: getSlidersPerViews(slidesPerView, 2),
+                grid: {
+                    rows: sliderNumbers > getSlidersPerViews(slidesPerView, 2) ? rows : 1,
 
+                }
 
             },
             1200: {
-                slidesPerView: slidesPerView[3] ? slidesPerView[3] : slidesPerView[slidesPerView.length - 1],
-            grid:{
-                    rows:1,
-            },
+                slidesPerView: getSlidersPerViews(slidesPerView, 3),
+                grid: {
+                    rows: sliderNumbers > getSlidersPerViews(slidesPerView, 3) ? rows : 1,
+                },
 
             }
         }
+
     });
 }
+
+function getSlidersPerViews(slidesPerView, index) {
+    return slidesPerView[index] ? slidesPerView[index] : slidesPerView[slidesPerView.length - 1];
+}
+

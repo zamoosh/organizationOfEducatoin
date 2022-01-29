@@ -645,6 +645,9 @@ swiper slider section
     transform: rotate(90deg);
     bottom: 0;
 }
+.swiper-pagination-container{
+    position: relative;
+}
 
 /*
 ===============
@@ -653,45 +656,6 @@ end swiper slider section
  */
 
 
-/*
-===============
-lesson section
-===============
- */
-
-.lesson__image-container {
-    height: 165px;
-    width: 150px;
-    margin: 2rem auto;
-}
-
-.lesson--section {
-    background: var(--gradiant-background-1);
-    background: var(--gradiant-background-2);
-    border-radius: var(--radius);
-}
-
-.lesson-container {
-    background: var(--gradiant-background-3);
-    background: var(--gradiant-background-4);
-    border-radius: var(--radius);
-}
-
-.lesson-container:hover {
-    background: var(--gradiant-background-4-hover);
-}
-
-.lesson-container {
-    margin-right: 2rem;
-}
-
-@media screen and (min-width: 578px) {
-    .lesson__image-container {
-        height: 210px;
-        width: 195px;
-    }
-
-}
 
 /*
 ===============
@@ -829,6 +793,63 @@ profile
     }
 
 }
+/*
+===============
+lesson section
+===============
+ */
+.lesson--section{
+    position: relative;
+}
+.lesson--section .add-lesson{
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+.lesson__image-container {
+    height: 165px;
+    width: 150px;
+    margin: 2rem auto;
+}
+
+.lesson--section {
+    background: var(--gradiant-background-1);
+    background: var(--gradiant-background-2);
+    border-radius: var(--radius);
+
+}
+
+.lesson-container {
+    background: var(--gradiant-background-3);
+    background: var(--gradiant-background-4);
+    border-radius: var(--radius);
+}
+
+.lesson-container:hover {
+    background: var(--gradiant-background-4-hover);
+}
+
+.lesson-container {
+    margin-right: 2rem;
+}
+.modal-lesson .file-uploader-label{
+    background-image: url("./../img/defualts/graduation-cap.jpg")
+}
+
+
+
+@media screen and (min-width: 578px) {
+    .lesson__image-container {
+        height: 210px;
+        width: 195px;
+    }
+
+}
+
+
+
+
 
 
 
