@@ -14,20 +14,36 @@
     <div class="login-page">
         <div class="login-wrap">
             <div class="login-html">
-                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
-                                                                                         class="tab">ورود</label><input
-                    id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">ثبت نام</label>
-                <div class="login-form">
-                    <form class="sign-in-htm" action="" method="POST">
-                        {% csrf_token %}
-                        <div class="group">
-                            <label for="user" class="label">شماره دانشجویی:</label>
-                            <input id="user" type="text" class="input " name="username">
+                     <input id="tab-1" type="radio" name="tab" class="sign-in"
+                    {% if signin %}
+                        checked
+                    {% endif %}
+            ><label for="tab-1" class="tab">ورود</label><input id="tab-2" type="radio" name="tab" class="sign-up"
+                    {% if signup %}
+                        checked
+                    {% endif %}
+            ><label for="tab-2" class="tab">ثبت نام</label>
+            <div class="login-form">
+                <form class="sign-in-htm" action="{%url 'user:signin'%}" method="POST" >
+                    {% csrf_token %}
+                    {% for error in signin_form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <p style="color: red">{{ error }}</p>
                         </div>
+                    {% endfor %}
+                    {% for field in signin_form %}
                         <div class="group">
-                            <label for="pass" class="label">رمز عبور</label>
-                            <input id="pass" type="password" class="input " data-type="password" name="password">
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+
                         </div>
+                        {% if field.help_text %}
+                            <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
                         <div class="group remind-me">
                             <input id="check" type="checkbox" class="check" checked name="check">
                             <label for="check"><span class="icon"></span>
@@ -43,26 +59,25 @@
                             <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">فراموشی رمز عبور</a>
                         </div>
                     </form>
-                    <form class="sign-up-htm" action="" method="POST">
+                    <form class="sign-up-htm" action="{% url 'user:signup' %}" method="POST">
                         {% csrf_token %}
-                        <div class="group">
-                            <label for="user" class="label">شماره دانشجویی:</label>
-                            <input id="user" type="text" class="input   " name="username">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">ایمیل</label>
-                            <input id="pass" type="email" class="input  " name="email">
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">رمز عبور</label>
-                            <input id="pass" type="password" class="input " data-type="password" name="password">
-                        </div>
-                        <div class="group"
-                        >
-                            <label for="pass" class="label">تکرار رمز عبور</label>
-                            <input id="pass" type="password" class="input " data-type="password"
-                                   name="repeatPassword">
-                        </div>
+                        {% for error in signup_form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <p style="color: red">{{ error }}</p>
+                            </div>
+                        {% endfor %}
+                        {% for field in signup_form %}
+                            <div class="group">
+                                {{ field.label_tag }}<br>
+                                {{ field }}
+                            </div>
+                            {% if field.help_text %}
+                                <small style="color: grey">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
                         <div class="group sign-up-button">
                             <input type="submit" class="button input input--transparent input--bold" value="ثبت نام">
                         </div>
@@ -79,18 +94,37 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+         {% if forgot %}
+         style ="display:block;opacity:1"
+         {% endif %}
+    >
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action=" ">
-                        <div class="group d-flex flex-column  ">
-                            <label for="pass" class="label mb-2">ایمیل خود را وارد کنید</label>
-                            <input id="pass" type="email" class="input " name="email">
+                    <form action="{% url  'user:password_reset' %}" method="POST">
+                        {% csrf_token %}
+                        {% for error in forgot_form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <p style="color: red">{{ error }}</p>
                         </div>
+                        {% endfor %}
+
+                        {% for field in forgot_form %}
+                            <div class="group d-flex flex-column  ">
+                                {{ field.label_tag }}<br>
+                                {{ field }}
+                            </div>
+                            {% if field.help_text %}
+                                <small style="color: grey">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
                         <div class="group text-center sign-up-button">
                             <input type="submit" class="button input input--transparent input--bold" value="ارسال">
                         </div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load rest_framework %}
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+    <form action="{% url 'user:profile-detail' pk=15 %}" >
+        {% csrf_token %}
+        {{ id }}
+{#    {% render_form serializer %}#}
+<input type="hidden" name="_METHOD" value="PUT"/>
+
+        <input type="email" name="email" placeholder="email" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

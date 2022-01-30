@@ -18,6 +18,7 @@ class SignupForm(UserCreationForm):
     }
     username = forms.IntegerField(
         label=_("شماره دانشجویی"),
+        widget=forms.TextInput(attrs={'class': "input"}),
         error_messages={
             'required': 'فیلد شماره دانشجویی اجباریست !',
             'invalid': 'فرمت شماره دانشجویی به درستی رعایت نشده !'
@@ -26,6 +27,7 @@ class SignupForm(UserCreationForm):
     email = forms.EmailField(
         label=_("ایمیل"),
         max_length=255,
+        widget=forms.EmailInput(attrs={'class': "input"}),
         error_messages={
             'required': 'فیلد ایمیل اجباریست !',
             'invalid' : 'فرمت ایمیل به درستی رعایت نشده !'
@@ -34,7 +36,7 @@ class SignupForm(UserCreationForm):
     password1 = forms.CharField(
         label=_("رمز عبور"),
         strip=False,
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': "input"}),
         help_text=password_validation.password_validators_help_text_html(),
         error_messages={
             'required': 'فیلد رمز عبور اجباریست !',
@@ -42,7 +44,7 @@ class SignupForm(UserCreationForm):
     )
     password2 = forms.CharField(
         label=_("تکرار رمز عبور"),
-        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password', 'class': "input"}),
         strip=False,
         error_messages={
             'required': 'فیلد تکرار رمز عبور اجباریست !',
@@ -51,7 +53,7 @@ class SignupForm(UserCreationForm):
 
     class Meta:
         model = Student
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+        fields = ('username', 'email', 'password1', 'password2',)
 
     def clean_username(self):
         username = self.cleaned_data.get("username")

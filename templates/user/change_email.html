@@ -1,0 +1,9 @@
+
+
+{% autoescape off %}
+سلام{{ user.first_name }},
+
+لطفا رو این لینک کیلیک کن تا ایمیلت عوض بشه بشه :
+
+http://{{ domain }}{% url 'user:change_email' uidb64=uid new_email=new_email token=token %}
+{% endautoescape %}

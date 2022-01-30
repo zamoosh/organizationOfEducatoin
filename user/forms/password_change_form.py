@@ -14,14 +14,29 @@ class ChangePasswordForm(PasswordChangeForm):
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
         strip=False,
         help_text=password_validation.password_validators_help_text_html(),
+        error_messages={
+            'required': _(
+                "این فیلد اجباریست است"
+            )
+        }
     )
     new_password2 = forms.CharField(
         label=_("تکرار رمز عبور جدید"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        error_messages={
+            'required': _(
+                "این فیلد اجباریست است"
+            )
+        }
     )
     old_password = forms.CharField(
         label=_("رمز عبور فعلی"),
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password', 'autofocus': True}),
+        error_messages={
+            'required': _(
+                "این فیلد اجباریست است"
+            )
+        }
     )

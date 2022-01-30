@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, User
-
+from django.shortcuts import _get_queryset
 
 class StudentManager(BaseUserManager):
 
@@ -32,6 +32,13 @@ class StudentManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def get_object_or_nothing(klass, *args, **kwargs):
+        try:
+            queryset = _get_queryset(klass)
+            return queryset.get(*args, **kwargs)
+        except :
+            return None
+
 
 class Student(AbstractBaseUser):
     username = models.IntegerField(verbose_name="شماره دانشجویی",unique=True)
@@ -42,7 +49,7 @@ class Student(AbstractBaseUser):
     state = models.CharField(verbose_name="استان",max_length=255, blank=True)
     field = models.CharField(verbose_name="",max_length=255, blank=True)
     university = models.CharField(verbose_name="دانشگاه",max_length=255, blank=True)
-    profile_image = models.ImageField(verbose_name="تصویر پروفایل",upload_to="%Y/%m/%d", blank=True)
+    profile_image = models.ImageField(verbose_name="تصویر پروفایل",upload_to="%Y/%m/%d", blank=True,null=True)
     is_master = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
