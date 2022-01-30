@@ -1,0 +1,102 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}lessons{% endblock %}
+
+
+{% block innerstyle %}
+    <style>
+        .swiper {
+            height: 1000px;
+        }
+
+        .swiper-slide {
+            height: calc(50% - 50px);
+        }
+
+        .swiper-wrapper {
+
+        }
+
+    </style>
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+
+    <div class="container mb-5 mt-5 p-5 lesson--section swiper-container" id="swiper-lesson">
+        <h3 class="  lesson--section__title">دروس استاد</h3>
+        <button class="input input--bold input--transparent add-lesson" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">افزودن درس
+        </button>
+        <div class="swiper swiper-container">
+            <div class=" swiper-wrapper" style="margin: 0 auto">
+                <!-- Slides -->
+                <div class=" swiper-slide">
+                    <div class="p-1 shadow lesson-container">
+                        <div class="text-center mb-1 lesson__image-container ">
+                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                 class="card-img-top  py-2 lesson__image" alt="">
+                        </div>
+                        <div class="p-3 lesson__content">
+                            <h4 class="lesson__title">ریز پردازنده</h4>
+                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
+                            <p class=" ">یکشنبه</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination-container"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal modal-lesson fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group mb-5">
+                        <input type="file" name="file" class="file-uploader" id="file-uploader">
+                        <label class="file-uploader-label" for="file-uploader">
+                            <div class="file-uploader-icon-container">
+                                <i class="fas fa-file-upload"></i>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="group d-flex flex-column mb-5 ">
+                        <input id="pass" type="text" class="input" name="name" placeholder="نام درس">
+                    </div>
+                    <div class="group d-flex flex-column mb-5 ">
+                        <input id="pass" type="text" class="input" name="title" placeholder="موضوع">
+                    </div>
+                    <div class="group d-flex flex-column  ">
+                        <input id="pass" type="text" class="input" name="uni" placeholder="دانشگاه">
+                    </div>
+                    <div class="group text-center sign-up-button">
+                        <input id="post" type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block mainjs %}
+    <script src="{% static "js/jquery.min.js" %}" type="module"></script>
+    <script src="{% static "js/index.js" %}" type="module"></script>
+    <script src="{% static "js/pages/lessons.js" %}" type="module"></script>
+{% endblock %}
+
+{% block testjs %}
+{% endblock %}

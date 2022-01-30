@@ -1,5 +1,9 @@
+from lesson.models import Lesson
 from .imports import *
 
 
 def login(request):
-    return render(request, "login.html")
+    context = {
+        'objects': Lesson.objects.all()
+    }
+    return render(request, "login/login.html")
