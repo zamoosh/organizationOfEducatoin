@@ -4,3 +4,5 @@ venv/
 __pycache__/
 */migrations/
 migrations/
+test for js/
+templates/lesson/test_for_mohammad.html

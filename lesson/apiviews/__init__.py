@@ -1,0 +1,2 @@
+from .list_lesson_for_update_table import LessonListForUpdateTable
+from .edit_lesson_for_update_table import LessonEditForUpdateTable

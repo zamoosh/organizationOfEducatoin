@@ -1,8 +1,8 @@
 from django.urls import path
-from lesson.serializer import *
+from lesson.apiviews import *
 
 app_name = 'api'
 urlpatterns = [
-    path('lesson/', LessonList.as_view(), name='lessons'),
-    path('lesson/<int:pk>', LessonDetail.as_view(), name='lesson')
+    path('lessons/', LessonListForUpdateTable.as_view(), name='lessons'),
+    path('lesson/<int:pk>', LessonEditForUpdateTable.as_view(), name='lesson')
 ]

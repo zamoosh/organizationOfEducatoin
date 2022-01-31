@@ -7,7 +7,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("user.urls"), name='home'),
     path('lesson/', include("lesson.urls"), name='lesson'),
-    path('api_lesson/', include('lesson.apiurls'), name='api_lesson')
+    path('api_lesson/', include('lesson.apiurls'), name='api_lesson'),
+    path('mohammad/', include('lesson.urls'), name='mohammad')
+
 ]
 
 urlpatterns += static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)
