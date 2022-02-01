@@ -1,10 +1,11 @@
 export function tableUpdater(data, element) {
     element.innerHTML += data.map(item => {
-        const {name, title, uni} = item;
+        const {name, title, uni, image} = item;
+        console.log(image);
         return `<div class=" swiper-slide">
                     <div class="p-1 shadow lesson-container">
                         <div class="text-center mb-1 lesson__image-container ">
-                            <img src=""
+                            <img src="${image}"
                                  class="card-img-top  py-2 lesson__image" alt="">
                         </div>
                         <div class="p-3 lesson__content">

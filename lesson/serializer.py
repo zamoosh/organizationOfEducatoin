@@ -1,8 +1,8 @@
 from lesson.models import *
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 
-class LessonSerializer(ModelSerializer):
+class LessonSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         pass
 
@@ -11,10 +11,17 @@ class LessonSerializer(ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['name', 'title', 'university_name', 'student', 'student_list', 'grades_list', 'create', 'update']
+        fields = ['name',
+                  'title',
+                  'university_name',
+                  'student', 'student_list',
+                  'grades_list',
+                  'create',
+                  'update'
+                  ]
 
 
-class LessonSerializerForUpdateTable(ModelSerializer):
+class LessonSerializerForUpdateTable(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         pass
 
@@ -23,4 +30,16 @@ class LessonSerializerForUpdateTable(ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['name', 'title', 'university_name']
+        fields = ['name', 'title', 'university_name', 'image']
+
+
+class HandoutSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        pass
+
+    def update(self, instance, validated_data):
+        pass
+
+    class Meta:
+        model = Handout
+        fields = ['lesson', 'title', 'author']

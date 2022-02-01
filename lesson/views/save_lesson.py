@@ -1,3 +1,5 @@
+from django.core.files.storage import FileSystemStorage
+
 from .imports import *
 
 
@@ -8,23 +10,31 @@ def save_lesson(request):
             try:
                 Lesson.objects.get(name=request.POST['name'],
                                    title=request.POST['title'],
-                                   university_name=request.POST['uni']
+                                   university_name=request.POST['uni'],
                                    )
                 flag = True
-            except Lesson.DoesNotExist:
+            except (Lesson.DoesNotExist, Exception):
                 flag = False
             if flag:
                 return JsonResponse({'status': 'failed'}, status=HTTP_200_OK)
+            data = {}
             lesson = Lesson.objects.create(name=request.POST['name'],
                                            title=request.POST['title'],
-                                           university_name=request.POST['uni']
+                                           university_name=request.POST['uni'],
                                            )
+            if not request.FILES:
+                data = {
+                    'name': lesson.name,
+                    'title': lesson.title,
+                    'uni': lesson.university_name,
+                }
+            else:
+                img = request.FILES['image']
+                file = FileSystemStorage()
+                lesson.image = file.save(img.name, img)
+                data['image'] = file.location
             lesson.save()
-            data = {
-                'name': lesson.name,
-                'title': lesson.title,
-                'uni': lesson.university_name
-            }
+
             arr = [data]
             return JsonResponse(arr, status=HTTP_200_OK, safe=False)
         else:

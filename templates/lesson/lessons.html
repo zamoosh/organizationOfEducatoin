@@ -53,25 +53,29 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-5">
-                        <input type="file" name="file" class="file-uploader" id="file-uploader">
-                        <label class="file-uploader-label" for="file-uploader">
-                            <div class="file-uploader-icon-container">
-                                <i class="fas fa-file-upload"></i>
+                        <form action="" class="form">
+                            {% csrf_token %}
+                            <input type="file" name="image" class="file-uploader image_file" id="file-uploader">
+                            <label class="file-uploader-label" for="file-uploader">
+                                <div class="file-uploader-icon-container">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+                            </label>
+                            <div class="group d-flex flex-column mb-5 ">
+                                <input id="pass" type="text" class="input" name="name" placeholder="نام درس">
                             </div>
-                        </label>
-                    </div>
-                    <div class="group d-flex flex-column mb-5 ">
-                        <input id="pass" type="text" class="input" name="name" placeholder="نام درس">
-                    </div>
-                    <div class="group d-flex flex-column mb-5 ">
-                        <input id="pass" type="text" class="input" name="title" placeholder="موضوع">
-                    </div>
-                    <div class="group d-flex flex-column  ">
-                        <input id="pass" type="text" class="input" name="uni" placeholder="دانشگاه">
-                    </div>
-                    <div class="group text-center sign-up-button">
-                        <input id="post" type="submit" class="button input input--transparent input--bold"
-                               value="ارسال">
+                            <div class="group d-flex flex-column mb-5 ">
+                                <input id="pass" type="text" class="input" name="title" placeholder="موضوع">
+                            </div>
+                            <div class="group d-flex flex-column  ">
+                                <input id="pass" type="text" class="input" name="uni" placeholder="دانشگاه">
+                            </div>
+                            <div class="group text-center sign-up-button">
+                                <input id="post" type="submit" class="button input input--transparent input--bold"
+                                       value="ارسال">
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
