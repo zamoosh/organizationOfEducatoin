@@ -11,39 +11,72 @@
 
 <body>
 {{ jafar }}
-<form action="{% url 'user:profile-detail' pk=15 %}" data-method="PATCH" enctype="multipart/form-data" class="form-horizontal" novalidate>
-                                  {% render_form serializer %}
+<form action="{% url 'user:profile-detail' pk=15 %}" data-method="PATCH" enctype="multipart/form-data"
+      class="form-horizontal" novalidate>
+    <input type="hidden" value="{{ csrf_token }}">
+    {% render_form serializer %}
 
 
+    <div class="form-actions">
 
+        <button data-method="PATCH">PATCH</button>
 
-                            <div class="form-actions">
-
-                              <button data-method="PATCH"  >PATCH</button>
-
-                            </div>
-                        </form>
+    </div>
+</form>
 
 {#    {% block script %}#}
-      <script>
-        window.drf = {
-          csrfHeaderName: "{{ csrf_header_name|default:'X-CSRFToken' }}",
-          csrfToken: "{% if request %}{{ csrf_token }}{% endif %}"
-        };
-      </script>
-      <script src="{% static "rest_framework/js/jquery-3.5.1.min.js" %}"></script>
-      <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>
-      <script src="{% static "rest_framework/js/csrf.js" %}"></script>
+{#      <script>#}
+{#        window.drf = {#}
+{#          csrfHeaderName: "{{ csrf_header_name|default:'X-CSRFToken' }}",#}
+{#          csrfToken: "{% if request %}{{ csrf_token }}{% endif %}"#}
+{#        };#}
+{#      </script>#}
+<script src="{% static "rest_framework/js/jquery-3.5.1.min.js" %}"></script>
+{#      <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>#}
+{#      <script src="{% static "rest_framework/js/csrf.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/default.js" %}"></script>#}
-      <script>
-        $(document).ready(function() {
-          $('form').ajaxForm();
-        });
-      </script>
+{#      <script>#}
+{#        $(document).ready(function() {#}
+{#          $('form').ajaxForm();#}
+{#        });#}
+{#      </script>#}
 {#    {% endblock %}#}
+<script>
+
+    const form = document.querySelector(".form");
+    const input = document.querySelector(".form input");
+    const url = form.action;
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        const formElement = new FormData(form);
+        const formData = Object.fromEntries(formElement);
+        const json = {...formData};
+        $.ajax({
+            url: url,
+            type: "PUT",
+            header: {
+                'Content-Type': 'application/json',
+                "X-CSRFToken": input.value
+            },
+            dataType: "json",
+            data:json,
+            success: function (result) {
+                replaceContent(result)
+            }
+        })
+    })
+
+    function replaceContent(content) {
+        document.open();
+        document.write(content);
+        document.close();
+    }
 
 
-  </body>
+</script>
+
+</body>
 </html>

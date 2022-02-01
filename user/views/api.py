@@ -29,8 +29,8 @@ from django.shortcuts import HttpResponse, redirect
 
 class StudentProfileAPI(viewsets.ViewSet):
     renderer_classes = [JSONRenderer, TemplateHTMLRenderer, BrowsableAPIRenderer]
-    authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [SessionAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def retrieve(self, request, pk=None):
         queryset = m.Student.objects.all()
