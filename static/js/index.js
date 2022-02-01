@@ -1,6 +1,6 @@
-import './utils/sidebar.js';
-import swiperSlider from "./utils/swiperSlider.js";
-import {getElement as select} from "./utils/getElement.js";
+//import './utils/sidebar.js';
+//import swiperSlider from "./utils/swiperSlider.js";
+//import {getElement as select} from "./utils/getElement.js";
 
 //home page
 
@@ -12,6 +12,14 @@ import {getElement as select} from "./utils/getElement.js";
 //
 // swiperSlider("#swiper-lesson", {slidesPerView: [1, 2, 3, 4]});
 // swiperSlider("#swiper-notification", {slidesPerView: [1, 2, 3]});
+
+const form = document.querySelector('.form');
+console.log(form);
+
+
+
+
+
 
 
 

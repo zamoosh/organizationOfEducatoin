@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import AllowAny ,IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .. import serializers as s
 from .. import models as m
@@ -11,16 +11,16 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes ,force_str
+from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode
-from rest_framework.renderers import TemplateHTMLRenderer ,JSONRenderer
+from rest_framework.renderers import TemplateHTMLRenderer, JSONRenderer, BrowsableAPIRenderer
 from rest_framework.authentication import SessionAuthentication
 from django.views.generic import CreateView
 from ..forms import (
     SignupForm,
     SigninForm,
     ForgotPasswordForm,
-    )
+)
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import get_user_model
@@ -28,23 +28,25 @@ from django.shortcuts import HttpResponse, redirect
 
 
 class StudentProfileAPI(viewsets.ViewSet):
-    renderer_classes = [TemplateHTMLRenderer,JSONRenderer]
+    renderer_classes = [JSONRenderer, TemplateHTMLRenderer, BrowsableAPIRenderer]
     authentication_classes = [SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
-    def retrieve(self ,request , pk=None):
+    def retrieve(self, request, pk=None):
         queryset = m.Student.objects.all()
         user = get_object_or_404(queryset, pk=pk)
         serializer = s.StudentInfo(user)
-        serializer.data['serializer']=serializer
-        return Response(data=serializer.data, template_name='login/profile.html')
+        data = {'serializer': serializer}
+        # data.update(serializer.data)
+        if request.accepted_renderer.format == 'json' or request.accepted_renderer.format == 'api':
+            return Response(data=serializer.data)
+        else:
+            return Response(data=data, template_name='user/tests.html')
 
     def partial_update(self, request, pk=None):
         queryset = m.Student.objects.all()
         user = get_object_or_404(queryset, pk=pk)
-
-
-
+        a=request.data['email']
         if request.data['email'] != user.email:
             current_site = get_current_site(request)
             mail_subject = "لطفا اکانت خود را فعال نمایید"
@@ -65,15 +67,25 @@ class StudentProfileAPI(viewsets.ViewSet):
                 to=[to_email]
             )
             serializer = s.StudentInfo(instance=user, data=request.data)
-            serializer.is_valid(raise_exception=True)
+            serializer.is_valid(raise_exception=False)
             email.send()
-            request.data['email'] = user.email
-        serializer = s.StudentInfo(instance=user, data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
 
-def change_email(request, uidb64,new_email, token):
+            data = {'serializer': serializer,'jafar':a}
+            if request.accepted_renderer.format == 'json' or request.accepted_renderer.format == 'api':
+                return Response(data=serializer.data)
+            else:
+                return Response(data=data, template_name='user/tests.html')
+        serializer = s.StudentInfo(instance=user, data=request.data)
+        if serializer.is_valid(raise_exception=False):
+            serializer.save()
+        data ={'serializer': serializer}
+        if request.accepted_renderer.format == 'json' or request.accepted_renderer.format == 'api':
+            return Response(data=serializer.data)
+        else:
+            return Response(data=data, template_name='user/tests.html')
+
+
+def change_email(request, uidb64, new_email, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = m.Student.objects.get(pk=uid)
@@ -82,8 +94,9 @@ def change_email(request, uidb64,new_email, token):
 
     if user is not None and default_token_generator.check_token(user, token):
         email = force_str(urlsafe_base64_decode(new_email))
-        user.email=email
+        user.email = email
         user.save()
         return redirect('test')
     else:
         return HttpResponse('user/account_activation_invalid.html')
+

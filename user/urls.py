@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views as v
 from rest_framework.routers import SimpleRouter
+
 router = SimpleRouter()
 router.register('api', v.StudentProfileAPI, basename='profile')
 
@@ -18,3 +19,4 @@ urlpatterns = [
      path('reset/<uidb64>/<token>/', v.ForgotPasswordConfirmView.as_view(), name='password_reset_confirm'),
      path('reset/done/', v.ForgotPasswordCompleteView.as_view(), name='password_reset_complete'),
 ]
+
