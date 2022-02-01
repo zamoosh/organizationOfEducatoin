@@ -47,6 +47,7 @@ class StudentProfileAPI(viewsets.ViewSet):
         queryset = m.Student.objects.all()
         user = get_object_or_404(queryset, pk=pk)
         a=request.data['email']
+        img=request.data['profile_image']
         if request.data['email'] != user.email:
             current_site = get_current_site(request)
             mail_subject = "لطفا اکانت خود را فعال نمایید"
@@ -67,7 +68,7 @@ class StudentProfileAPI(viewsets.ViewSet):
                 to=[to_email]
             )
             serializer = s.StudentInfo(instance=user, data=request.data)
-            serializer.is_valid(raise_exception=False)
+            serializer.is_valid(raise_exception=True)
             email.send()
 
             data = {'serializer': serializer,'jafar':a}
@@ -76,9 +77,9 @@ class StudentProfileAPI(viewsets.ViewSet):
             else:
                 return Response(data=data, template_name='user/tests.html')
         serializer = s.StudentInfo(instance=user, data=request.data)
-        if serializer.is_valid(raise_exception=False):
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
-        data ={'serializer': serializer}
+        data ={'serializer': serializer , 'img':img}
         if request.accepted_renderer.format == 'json' or request.accepted_renderer.format == 'api':
             return Response(data=serializer.data)
         else:

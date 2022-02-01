@@ -11,19 +11,20 @@
 
 <body>
 {{ jafar }}
-<form action="{% url 'user:profile-detail' pk=15 %}" data-method="PATCH" enctype="multipart/form-data"
+{{ img }}
+<form class="form" action="/api/2/?format=api " data-method="PATCH" enctype="multipart/form-data"
       class="form-horizontal" novalidate>
-    <input type="hidden" value="{{ csrf_token }}">
+    {% csrf_token %}
     {% render_form serializer %}
-
 
     <div class="form-actions">
 
-        <button data-method="PATCH">PATCH</button>
+        <button type="submit">PATCH</button>
 
     </div>
 </form>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 {#    {% block script %}#}
 {#      <script>#}
 {#        window.drf = {#}
@@ -31,7 +32,7 @@
 {#          csrfToken: "{% if request %}{{ csrf_token }}{% endif %}"#}
 {#        };#}
 {#      </script>#}
-<script src="{% static "rest_framework/js/jquery-3.5.1.min.js" %}"></script>
+{#<script src="{% static "rest_framework/js/jquery-3.5.1.min.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/csrf.js" %}"></script>#}
 {#      <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>#}
@@ -43,37 +44,43 @@
 {#        });#}
 {#      </script>#}
 {#    {% endblock %}#}
-<script>
 
+<script>
+    let name = $('.form')
     const form = document.querySelector(".form");
     const input = document.querySelector(".form input");
     const url = form.action;
 
     form.addEventListener('submit', e => {
         e.preventDefault()
-        const formElement = new FormData(form);
-        const formData = Object.fromEntries(formElement);
-        const json = {...formData};
-        $.ajax({
+        let file = $('input[type=file]')[0];
+        let array = file.files;
+        let email = $('input[type=email]');
+        {#const forms = name.serialize();#}
+        {#console.log(forms)#}
+        let json = {'username': 2,'email': email.val(), 'profile_image': array}
+         $.ajax({
             url: url,
-            type: "PUT",
-            header: {
-                'Content-Type': 'application/json',
-                "X-CSRFToken": input.value
-            },
-            dataType: "json",
-            data:json,
-            success: function (result) {
-                replaceContent(result)
+            type: "PATCH",
+            dataType: "application/json; charset=utf-8",
+             headers:{
+            'Content-Type' : 'application/json',
+             "X-CSRFToken": input.value
+        },
+            data:JSON.stringify(json) ,
+            success: function (data){
+                console.log(data)
             }
         })
-    })
 
-    function replaceContent(content) {
-        document.open();
-        document.write(content);
-        document.close();
-    }
+
+
+
+
+
+
+
+    })
 
 
 </script>
