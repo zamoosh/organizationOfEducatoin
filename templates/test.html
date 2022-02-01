@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load rest_framework %}{% load static %}
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+<form action="{% url 'test:test2' %}" class="form">
+    {% csrf_token %}
+    <input type="text" name="mostafa">
+
+    <input type="submit" value="ali">
+
+</form>
+
+<script src="{% static "js/index.js" %} " type="module">
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+<script>
+
+
+    const form = document.querySelector(".form");
+    const input = document.querySelector(".form input");
+    const url = form.action;
+
+    form.addEventListener('submit', e => {
+        e.preventDefault()
+        $.ajax({
+            url: url, success: function (result) {
+                replaceContent(result)
+            }
+        })
+    })
+
+    function replaceContent(content) {
+        document.open();
+        document.write(content);
+        document.close();
+    }
+
+    /*
+    form.addEventListener('submit',async e=>{
+        e.preventDefault();
+        const formElement = new FormData(form);
+        const formData = Object.fromEntries(formElement);
+        const url = form.action;
+
+        const jsonObject = {...formData};
+        const response = await fetch(url,{
+            method: 'PUT',
+            body: JSON.stringify(jsonObject),
+            headers:{
+                'Content-Type' : 'application/json',
+                 "X-CSRFToken": input.value
+            },
+
+        })
+        const data = await response.json();
+        console.log(data);
+
+
+
+    })
+    */
+</script>
+
+
+</body>
+</html>
