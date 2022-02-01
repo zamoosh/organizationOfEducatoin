@@ -874,22 +874,21 @@ note section
     margin: 0 auto;
 }
 .table{
-border: 2px solid var(--clr-primary-1);
-color:var(--clr-primary-1);
-    border-radius: var(--radius);
+    border:  2px solid var(--clr-primary-1);
+    color:var(--clr-primary-1);
     vertical-align: middle;
-
 }
 .table-bordered > :not(caption) > * > *{
     border-width: 2px;
 }
 .table-svg-image{
-    width: 50px;
+    width: 25px;
 }
+
 @media screen and (min-width: 768px){
     .add-note--section{
     max-width: 500px;
-}
+    }
 }
 
 
