@@ -1,7 +1,6 @@
 export function tableUpdater(data, element) {
     element.innerHTML += data.map(item => {
         const {name, title, uni, image} = item;
-        console.log(image);
         return `<div class=" swiper-slide">
                     <div class="p-1 shadow lesson-container">
                         <div class="text-center mb-1 lesson__image-container ">

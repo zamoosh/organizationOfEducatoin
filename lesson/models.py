@@ -11,6 +11,18 @@ def age_validator(age):
         raise ValueError(f"age should be in range 18 to 75")
 
 
+def lesson_directory_name(instance, filename):
+    current_date = datetime.date.today()
+    year = current_date.year
+    month = current_date.month
+    day = current_date.day
+    j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
+    day = j.day
+    month = j.month
+    year = j.year
+    return '%s/%s/%s/%s/%s/%s' % ('lesson', instance.name, year, month, day, filename)
+
+
 class Lesson(models.Model):
     name = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
