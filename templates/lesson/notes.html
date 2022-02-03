@@ -3,8 +3,6 @@
 
 
 {% block innerstyle %}
-    <style>
-    </style>
 
 {% endblock %}
 
@@ -27,9 +25,13 @@
                     <textarea name="" id="" class="input" cols="19" rows="5" placeholder="توضیحات"></textarea>
                     <div class="group ">
                         <div class="d-flex flex-column pe-5">
-                            <label for="upload-notes" class="file-uploader-label--file">
-                                بازگزاری جزوه
+                            <div class="file-uploader-label--rounded-container">
+                                <label for="upload-notes" class="file-uploader-label file-uploader-label--rounded">
                                 <i class="fas fa-upload"></i> </label>
+                                <span>بارگزاری جزوه</span>
+                            </div>
+
+
                             <input id="upload-notes" type="file" name="file-uploader"
                                    class="align-self-center file-uploader">
                             <input type="submit"
@@ -40,8 +42,9 @@
                 </div>
             </form>
         </header>
-        <div class="mt-5 table-responsive table-container">
-            <table class="table table-bordered ">
+        <div class="mb-5 m-md-5">
+            <div class="table-responsive rounded-table-container ">
+            <table class="table rounded-table   ">
                 <thead>
                 <tr>
                     <th scope="col">ردیف</th>
@@ -55,7 +58,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">‍۱</th>
                     <td>یک چیزی</td>
                     <td>نمره تشویقی به ...</td>
                     <td>۱۴۰۰/۵/۵</td>
@@ -68,6 +71,8 @@
                 </tbody>
             </table>
         </div>
+        </div>
+
 
 
     </div>

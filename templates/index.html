@@ -1,7 +1,36 @@
 {% extends "./base.html" %}{% load static %}
 {% block title %}{{ name }}{% endblock %}
+{% block innerstyle %}
 
+{% endblock %}
 {% block content %}
+    <div class="" id="main-slider" style="position: relative;">
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" ><img src="{% static "img/sliders/دروس.jpg" %}" alt=""></div>
+    <div class="swiper-slide"><img src="{% static "img/sliders/اطلاعيه ها (2).jpg" %}" alt=""></div>
+    <div class="swiper-slide"><img src="{% static "img/sliders/جزوات.jpg" %}" alt=""></div>
+
+
+  </div>
+    <div class="svg-rounded">
+        <img src="{% static "img/sliders/گردی اسلایدر.png" %}" alt="" >
+    </div>
+    
+    
+  <!-- If we need pagination -->
+{#  <div class="swiper-pagination"></div>#}
+
+
+
+</div>
+    </div>
+
+
+
+
 
 
     <!-- lesson section -->
@@ -298,34 +327,6 @@
         </div>
     </section>
 
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <!-- end article section -->
-{{ name }}
-
-
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
 
 
 
@@ -335,7 +336,9 @@
 {% endblock %}
 
 
-
+{% block mainjs %}
+<script src="{% static "js/index.js" %}" type="module"></script>
+{% endblock %}
 
 
 
