@@ -1,3 +1,5 @@
+import './menuSidebar.js'
+
 import {getElement as select} from "./getElement.js";
 const navToggle = select('.nav-toggle');
 const mobileToggle = select('.mobile-toggle');

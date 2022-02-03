@@ -206,7 +206,7 @@ header section
 }
 
 .logo-container {
-    width: 100px;
+    width: 120px;
     height: 50px;
 }
 
@@ -578,6 +578,27 @@ end login
  */
 
 /*
+===================
+main slider
+===================
+ */
+#main-slider .swiper{
+    background: var(--clr-primary-2);
+    position: relative;
+}
+#main-slider .swiper-slide img{
+    object-fit: contain!important;
+    max-height: 100vh;
+}
+#main-slider .swiper-slide{
+   max-height: 100vh;
+}
+.svg-rounded{
+    z-index: 1000!important;
+    position: absolute;
+    bottom: -10%;
+}
+/*
 ===============
 article section
 ===============
@@ -726,6 +747,10 @@ file uploader
     opacity: 0;
     z-index: -999;
 }
+.file-uploader-label--rounded-container{
+    color: var(--clr-primary-1);
+    font-weight: 900;
+}
 
 .file-uploader-label {
     height: 100px;
@@ -739,15 +764,21 @@ file uploader
     background-image: url("./../img/defualts/Default Profile.jpg");
     background-size: cover;
 }
-.file-uploader-label--file{
-    display: inline-block;
-    border-radius: var(--radius);
+.file-uploader-label--rounded{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--clr-primary-1);
     cursor: pointer;
 padding: .5rem;
     color: var(--clr-primary-2);
 
 }
+
 
 
 .file-uploader-label .file-uploader-icon-container {
@@ -786,6 +817,14 @@ profile
     background: var(--gradiant-background-2);
     border-radius: var(--radius);
 }
+
+.profile-container input, .profile-container select{
+    padding: 5px!important;
+}
+
+
+
+
 
 .more-information__profile {
     max-width: 400px;
@@ -873,14 +912,40 @@ note section
     max-width: 50vw;
     margin: 0 auto;
 }
-.table{
-    border:  2px solid var(--clr-primary-1);
+
+.rounded-table-container{
+    border: 2px solid var(--clr-primary-1);
+    border-radius: 1rem;
+}
+.rounded-table{
     color:var(--clr-primary-1);
     vertical-align: middle;
+    border-collapse: collapse;
+    margin-bottom: 0!important;
 }
-.table-bordered > :not(caption) > * > *{
-    border-width: 2px;
+.rounded-table tr:first-child th:first-child{
+    width: 20px;
 }
+.rounded-table tr th:first-child{
+    text-align: center;
+}
+
+.rounded-table th,.rounded-table td {
+    font-family: var(--ff-pirmary-bold);
+  padding: .5em;
+  border-bottom: 2px solid var(--clr-primary-1)!important;
+    border-left: 2px solid var(--clr-primary-1)!important;
+}
+.rounded-table tbody tr td, .rounded-table tbody tr:last-child th{
+    border-bottom: none!important;
+}
+.rounded-table thead tr th:last-child ,.rounded-table tbody tr td:last-child {
+    border-left: 0!important;
+}
+
+
+
+
 .table-svg-image{
     width: 25px;
 }

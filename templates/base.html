@@ -11,6 +11,9 @@
               integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
               crossorigin="anonymous">
     {% endblock %}
+    {% block sweetalert %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% endblock %}
     {% block swiperjs %}
         <link
                 rel="stylesheet"
@@ -153,7 +156,7 @@
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-replace-svg="nest"></script>
 
         {% block mainjs %}
-             <script src="{% static "js/index.js" %}" type="module"></script>
+
         {% endblock %}
 
 

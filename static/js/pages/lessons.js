@@ -1,4 +1,4 @@
-import './../utils/sidebar.js';
+import './../utils/menuSidebar.js';
 import swiperSlider from "./../utils/swiperSlider.js";
 import {getElement as select} from "./../utils/getElement.js";
 import "./../utils/fileUploader.js"
