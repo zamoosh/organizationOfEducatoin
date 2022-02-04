@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load rest_framework %}
+    {% load rest_framework %}{% load static %}
+
 
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
 
 </head>
 
 <body>
-    <form action="{% url 'user:profile-detail' pk=15 %}" >
-        {% csrf_token %}
-        {{ id }}
-{#    {% render_form serializer %}#}
-<input type="hidden" name="_METHOD" value="PUT"/>
+{{ jafar }}
+<form action="{% url 'user:profile-detail' pk=15 %}" data-method="PATCH" enctype="multipart/form-data" class="form-horizontal" novalidate>
+{% render_form serializer %}
+{#    {% for i in serializer.data %}#}
+{#        {{ i }}#}
+{#        {{ i.style }}#}
+        {#        {% render_field i i.style  %}#}
+{#    {% endfor %}#}
 
-        <input type="email" name="email" placeholder="email" required>
-        <input type="submit" value="Submit">
-    </form>
-</body>
+    <div class="form-actions">
+
+      <button data-method="PATCH"  >PATCH</button>
+
+    </div>
+</form>
+
+{#    {% block script %}#}
+      <script>
+        window.drf = {
+          csrfHeaderName: "{{ csrf_header_name|default:'X-CSRFToken' }}",
+          csrfToken: "{% if request %}{{ csrf_token }}{% endif %}"
+        };
+      </script>
+      <script src="{% static "rest_framework/js/jquery-3.5.1.min.js" %}"></script>
+      <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>
+      <script src="{% static "rest_framework/js/csrf.js" %}"></script>
+{#      <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>#}
+{#      <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>#}
+{#      <script src="{% static "rest_framework/js/default.js" %}"></script>#}
+      <script>
+        $(document).ready(function() {
+          $('form').ajaxForm();
+        });
+      </script>
+{#    {% endblock %}#}
+
+
+  </body>
 </html>

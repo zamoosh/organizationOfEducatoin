@@ -3,7 +3,6 @@ from . import views as v
 from rest_framework.routers import SimpleRouter
 router = SimpleRouter()
 router.register('api', v.StudentProfileAPI, basename='profile')
-
 app_name = "user"
 urlpatterns = [
      path('',include(router.urls)),

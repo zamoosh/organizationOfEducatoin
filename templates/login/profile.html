@@ -1,59 +1,131 @@
 {% extends "base.html" %}{% load static %}
-{% block title %}login page{% endblock %}
-{% block bootstrap %}
-{% endblock %}
-{% block innerstyle %}
-    <style>
+{% block title %}profile{% endblock %}
 
 
-    </style>
-{% endblock %}
 
 
-{% block header %}
-{% endblock %}
+
 {% block content %}
-    <div class="login-page">
-        <div class="login-wrap">
-            <div class="login-html">
-                   <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
-                                                                                         class="tab">تغییر رمز عبور</label><input
-                    id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab" style="display: none;">ثبت نام</label>
-                <div class="login-form">
-                    <form class="sign-in-htm" action="" method="POST">
-                        {% csrf_token %}
-                        {% for error in form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            <p style="color: red">{{ error }}</p>
-                        </div>
-                        {% endfor %}
+    <div class="m-5 profile-page">
 
-                        {% for field in form %}
-                            <div class="group d-flex flex-column  ">
-                                {{ field.label_tag }}<br>
-                                {{ field }}
+        <form class=" container p-5 profile-container">
+            <div class="more-information__profile-md">
+                <div class="row mb-md-5 flex-md-row-reverse">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <input type="file" name="file" class="file-uploader" id="file-uploader">
+                            <label class="file-uploader-label" for="file-uploader">
+
+                                <div class="file-uploader-icon-container">
+                                    <i class="fas fa-file-upload"></i>
+                                </div>
+
+                            </label>
+                        </div>
+
+
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                            <div class="col-12 col-md-4 text-md-start ">
+                                <label for="inputPassword6" class="col-form-label">شماره دانشجویی</label>
                             </div>
-                            {% if field.help_text %}
-                                <small style="color: grey">{{ field.help_text }}</small>
-                            {% endif %}
-                            {% for error in field.errors %}
-                                <p style="color: red">{{ error }}</p>
-                            {% endfor %}
-                        {% endfor %}
+                            <div class="col-12 col-md-8 text-md-end">
+                                <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                            </div>
 
-                        <div class="group">
-                            <input type="submit" class="button input input--transparent input--bold" value="تأیید">
                         </div>
-                        <div class="hr"></div>
-                    </form>
+                        <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                            <div class="col-12 col-md-4 text-md-start ">
+                                <label for="inputPassword6" class="col-form-label">نام و نام خانوادگی</label>
+                            </div>
+                            <div class="col-12 col-md-8 text-md-end">
+                                <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+
+            <div class="more-information__profile">
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start ">
+                        <label for="inputPassword6" class="col-form-label">رشته تحصیلی</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">دانشگاه</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">ایمیل</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline" disabled
+                               value="repenter1380@gmail.com">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">استان محل سکونت</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label">شهر محل سکونت</label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start">
+                        <input type="text" id="" class="input" aria-describedby="passwordHelpInline">
+                    </div>
+
+                </div>
+                <div class="row g-3 align-items-center  text-center mb-3 mb-md-5">
+                    <div class="col-12 col-md-4 text-md-start">
+                        <label for="inputPassword6" class="col-form-label"> درس </label>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-start select-lesson__profile">
+                        <select class=" input w-100" aria-label="Default select example">
+                            <option selected>انتخاب درس</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="group text-center sign-up-button">
+                <input type="submit" class="button input input--transparent input--bold" value="ذخیره تغییرات">
+            </div>
+
+
+        </form>
     </div>
 
 
 
+{% endblock %}
+{% block testjs %}
+
+
+
 
 {% endblock %}
-{% block footer %}
-{% endblock %}
+
+
+
