@@ -401,7 +401,7 @@ table
   border-bottom: 2px solid var(--clr-primary-1)!important;
     border-left: 2px solid var(--clr-primary-1)!important;
 }
-.rounded-table tbody tr td, .rounded-table tbody tr:last-child th{
+.rounded-table tbody tr:last-child td, .rounded-table tbody tr:last-child th{
     border-bottom: none!important;
 }
 .rounded-table thead tr th:last-child ,.rounded-table tbody tr td:last-child {
@@ -413,8 +413,12 @@ table
 
 .table-svg-image{
     width: 25px;
+    text-align: center;
+    cursor: pointer;
 }
-
+.table-svg-image img{
+    width: 40px;
+}
 
 /*
 ====================
@@ -1030,3 +1034,15 @@ note section
 
 
 
+/*
+================
+each lesson
+================
+
+ */
+
+
+
+.student-list-container th,.student-list-container td{
+    background: var(--clr-white);
+}
