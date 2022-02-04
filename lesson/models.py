@@ -2,7 +2,6 @@ from django.db import models
 from jalali_date import datetime2jalali
 import datetime
 import jdatetime
-
 from user.models import Student
 
 
@@ -11,16 +10,34 @@ def age_validator(age):
         raise ValueError(f"age should be in range 18 to 75")
 
 
-def lesson_directory_name(instance, filename):
+def directory_name(instance, filename=None):
     current_date = datetime.date.today()
-    year = current_date.year
-    month = current_date.month
-    day = current_date.day
+    year, month, day = current_date.year, current_date.month, current_date.day
     j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
-    day = j.day
-    month = j.month
-    year = j.year
-    return '%s/%s/%s/%s/%s/%s' % ('lesson', instance.name, year, month, day, filename)
+    day, month, year = j.day, j.month, j.year
+
+    def returner():
+        try:
+            flag = instance.lesson.name
+            flag = 'handout'
+        except (AttributeError, Exception):
+            flag = 'lesson'
+        if filename is not None:
+            if flag == 'lesson':
+                return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+                    'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
+            else:
+                return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+                    'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
+        else:
+            if flag == 'lesson':
+                return '%s/%s/%s/%s/%s/%s/%s' % (
+                    'lesson', instance.title, year, month, day, instance.university_name, instance.name)
+            else:
+                return '%s/%s/%s/%s/%s/%s/%s' % (
+                    'handout', instance.title, year, month, day, instance.university_name, instance.name)
+
+    return returner()
 
 
 class Lesson(models.Model):
@@ -32,7 +49,7 @@ class Lesson(models.Model):
     grades_list = models.JSONField(null=True, blank=True)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='%y/%m/%d/lesson/', blank=True)
+    image = models.ImageField(upload_to=directory_name, blank=True)
 
     def __str__(self):
         return f'{self.name} {self.title}'
@@ -56,18 +73,6 @@ class Exam(models.Model):
         return datetime2jalali(self.create)
 
 
-def handout_directory_name(instance, filename):
-    current_date = datetime.date.today()
-    year = current_date.year
-    month = current_date.month
-    day = current_date.day
-    j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
-    day = j.day
-    month = j.month
-    year = j.year
-    return '%s/%s/%s/%s/%s/%s' % ('handout', instance.lesson.name, year, month, day, filename)
-
-
 class Handout(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
@@ -75,7 +80,7 @@ class Handout(models.Model):
     author = models.CharField(max_length=255, blank=True)
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
-    file = models.FileField(blank=True, upload_to=handout_directory_name)
+    file = models.FileField(blank=True, upload_to=directory_name)
 
     def __str__(self):
         return f'{self.lesson} {self.title}'

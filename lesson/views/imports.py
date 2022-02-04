@@ -7,4 +7,3 @@ from django.conf import settings
 from rest_framework.status import HTTP_200_OK
 from lesson.models import *
 import json
-import os

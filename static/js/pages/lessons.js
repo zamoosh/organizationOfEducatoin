@@ -42,13 +42,17 @@ $(document).ready(function () {
                  * We parse the response to JsonObject because of row 35 (contentType: false)
                  * this would change the response type to String.
                  */
+                $('.form').trigger("reset");
+                $('input[name="image"]').trigger('reset');
                 response = JSON.parse(response);
                 if ('status' in response) {
                     if (response['status'] === 'failed')
                         alert('this lesson is already exist!');
                     else if (response['status'] === 'empty')
                         alert('please enter something!');
-                }
+                } else
+                    alert('lesson was added successfully');
+                
             }
         });
     });
