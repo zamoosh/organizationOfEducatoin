@@ -10,11 +10,13 @@ def age_validator(age):
         raise ValueError(f"age should be in range 18 to 75")
 
 
-def directory_name(instance, filename=None):
+def directory_name(instance=None, filename=None, just_date=False):
     current_date = datetime.date.today()
     year, month, day = current_date.year, current_date.month, current_date.day
     j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
     day, month, year = j.day, j.month, j.year
+    if just_date:
+        return day, month, year
 
     def returner():
         try:
