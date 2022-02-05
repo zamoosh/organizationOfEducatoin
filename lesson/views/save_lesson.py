@@ -28,13 +28,10 @@ def save_lesson(request):
                 }
                 lesson.save()
             else:
-                img = request.FILES['image']
-                path = settings.MEDIA_ROOT
-                path += directory_name(lesson, filename=None)
-                file = FileSystemStorage(location=path)
-                lesson.image = file.save(img.name, img)
-                data['image'] = file.location
+                lesson.image = request.FILES['image']
             lesson.save()
+            if lesson.image:
+                data['image'] = lesson.image.url()
             arr = [data]
             return JsonResponse(arr, status=HTTP_200_OK, safe=False)
         else:

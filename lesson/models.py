@@ -16,30 +16,29 @@ def directory_name(instance=None, filename=None, just_date=False):
     j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
     day, month, year = j.day, j.month, j.year
     if just_date:
-        return day, month, year
+        return f'lesson/{year}/{month}/{day}/'
 
-    def returner():
-        try:
-            flag = instance.lesson.name
-            flag = 'handout'
-        except (AttributeError, Exception):
-            flag = 'lesson'
-        if filename is not None:
-            if flag == 'lesson':
-                return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-                    'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
-            else:
-                return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-                    'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
-        else:
-            if flag == 'lesson':
-                return '%s/%s/%s/%s/%s/%s/%s' % (
-                    'lesson', instance.title, year, month, day, instance.university_name, instance.name)
-            else:
-                return '%s/%s/%s/%s/%s/%s/%s' % (
-                    'handout', instance.title, year, month, day, instance.university_name, instance.name)
-
-    return returner()
+    # def returner():
+    #     try:
+    #         flag = instance.lesson.name
+    #         flag = 'handout'
+    #     except (AttributeError, Exception):
+    #         flag = 'lesson'
+    #     if filename is not None:
+    #         if flag == 'lesson':
+    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
+    #         else:
+    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
+    #     else:
+    #         if flag == 'lesson':
+    #             return '%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name)
+    #         else:
+    #             return '%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name)
+    return '%s/%s/%s/%s/%s' % ('lesson', year, month, day, filename)
 
 
 class Lesson(models.Model):
