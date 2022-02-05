@@ -1,3 +1,6 @@
+from django.http import JsonResponse
+from rest_framework.status import HTTP_200_OK
+
 from lesson.models import *
 from rest_framework import serializers
 

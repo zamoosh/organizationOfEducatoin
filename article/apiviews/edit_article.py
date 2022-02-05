@@ -1,6 +1,6 @@
 from .imports import *
 
 
-class ListArticleForUpdateTable(ListAPIView):
+class EditArticle(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer

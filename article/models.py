@@ -1,13 +1,37 @@
+import datetime
+import jdatetime
 from django.db import models
-from lesson.models import directory_name
 
 
-def directory_name_article(instance, filename):
-    day, month, year = directory_name(just_date=True)
-    if filename is None:
-        return '%s/%s/%s/%s/%s/%s/%s' % ('article', instance.subject, instance.title, year, month, day, instance.name)
-    return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-        'article', instance.subject, instance.title, year, month, day, instance.name, filename)
+def directory_name_article(instance, filename, just_date=False):
+    current_date = datetime.date.today()
+    year, month, day = current_date.year, current_date.month, current_date.day
+    j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
+    day, month, year = j.day, j.month, j.year
+    if just_date:
+        return f'article/{year}/{month}/{day}/'
+
+    # def returner():
+    #     try:
+    #         flag = instance.lesson.name
+    #         flag = 'handout'
+    #     except (AttributeError, Exception):
+    #         flag = 'lesson'
+    #     if filename is not None:
+    #         if flag == 'lesson':
+    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
+    #         else:
+    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
+    #     else:
+    #         if flag == 'lesson':
+    #             return '%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name)
+    #         else:
+    #             return '%s/%s/%s/%s/%s/%s/%s' % (
+    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name)
+    return '%s/%s/%s/%s/%s' % ('article', year, month, day, filename)
 
 
 class Article(models.Model):

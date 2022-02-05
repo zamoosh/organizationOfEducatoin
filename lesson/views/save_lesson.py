@@ -31,7 +31,7 @@ def save_lesson(request):
                 lesson.image = request.FILES['image']
             lesson.save()
             if lesson.image:
-                data['image'] = lesson.image.url()
+                data['image'] = lesson.image.url
             arr = [data]
             return JsonResponse(arr, status=HTTP_200_OK, safe=False)
         else:
