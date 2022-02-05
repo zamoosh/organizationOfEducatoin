@@ -43,7 +43,8 @@ $(document).ready(function () {
                  * this would change the response type to String.
                  */
                 $('.form').trigger("reset");
-                $('input[name="image"]').trigger('reset');
+                let label = $('#img')[0];
+                label.classList.add("disabled-image");
                 response = JSON.parse(response);
                 if ('status' in response) {
                     if (response['status'] === 'failed')
@@ -52,7 +53,7 @@ $(document).ready(function () {
                         alert('please enter something!');
                 } else
                     alert('lesson was added successfully');
-                
+
             }
         });
     });

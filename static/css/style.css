@@ -852,7 +852,11 @@ lesson section
     margin-right: 2rem;
 }
 .modal-lesson .file-uploader-label{
-    background-image: url("./../img/defualts/graduation-cap.jpg")
+    background-image: url("./../img/defualts/graduation-cap.jpg");
+}
+
+.disabled-image {
+    background-image: url("./../img/defualts/graduation-cap.jpg") !important;
 }
 
 
