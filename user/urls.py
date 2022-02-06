@@ -3,5 +3,8 @@ from .views import *
 
 app_name = "user"
 urlpatterns = [
-    path('', login, name="login"),
+    # path('', login, name="login"),
+    path('', index, name="index"),
+    path('requests/',  requests),
+    path('lesson/',  lesson),
 ]

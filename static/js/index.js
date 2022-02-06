@@ -1,27 +1,25 @@
-// import {tableUpdater} from "./utils/tableUpdater.js";
-//
-// $(document).ready(function () {
-//
-//     $("#post").click(function () {
-//         $.ajax({
-//             url: "/lesson/save/lesson/",
-//             type: "POST",
-//             dataType: "json",
-//             data: {
-//                 'name': $('input[name="name"]').val(),
-//                 'title': $('input[name="title"]').val(),
-//                 'uni': $('input[name="uni"]').val()
-//             },
-//             success: function (data) {
-//                 if ('status' in data) {
-//                     if (data['status'] === 'failed') {
-//                         alert('This lesson is already exist!');
-//                     }
-//                 } else {
-//                     const element = $('.lesson-table')[0];
-//                     tableUpdater(data, element);
-//                 }
-//             }
-//         });
-//     });
-// })
+import swiperSlider from "./utils/swiperSlider.js";
+import './utils/sidebar.js';
+
+
+swiperSlider('#main-slider',{slidesPerView: [1],spaceBetween:0,loop:true})
+
+swiperSlider("#swiper-article-1", {slidesPerView: [3], direction: "vertical", loop: true});
+swiperSlider("#swiper-article-2", {slidesPerView: [3], direction: "vertical", loop: true});
+
+swiperSlider("#swiper-lesson", {slidesPerView: [1, 2, 3, 4]});
+swiperSlider("#swiper-notification", {slidesPerView: [1, 2, 3]});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
