@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import pre_delete
+from django.db.models.signals import pre_delete, post_save
 from django.dispatch import receiver
 from jalali_date import datetime2jalali
 from user.models import Student
@@ -36,7 +36,10 @@ def directory_name(instance=None, filename=None, just_date=False):
     #         else:
     #             return '%s/%s/%s/%s/%s/%s/%s' % (
     #                 'handout', instance.title, year, month, day, instance.university_name, instance.name)
-    return '%s/%s/%s/%s/%s' % ('lesson', year, month, day, filename)
+    if isinstance(instance, Lesson):
+        return '%s/%s/%s/%s/%s' % ('lesson', year, month, day, filename)
+    elif isinstance(instance, Handout):
+        return '%s/%s/%s/%s/%s' % ('handout', year, month, day, filename)
 
 
 class Lesson(models.Model):
@@ -54,6 +57,7 @@ class Lesson(models.Model):
         return f'{self.name} {self.title}'
 
     def delete(self, using=None, keep_parents=False):
+        print('hello world!')
         pass
 
     def datetime_to_jalali_create(self):
@@ -112,7 +116,16 @@ class Notifications(models.Model):
         return datetime2jalali(self.update)
 
 
-@receiver(pre_delete, sender=Lesson)
-def lesson_delete(sender, instance, **kwargs):
-    # Pass false so FileField doesn't save the model.
-    instance.image.delete(False)
+@receiver(signal=pre_delete)
+def lesson_delete(**kwargs):
+    ins = kwargs['instance']
+    if isinstance(ins, Lesson):
+        if ins.image:
+            ins.image.delete(False)
+    elif isinstance(ins, Handout):
+        ins.lesson.image.delete(False)
+
+
+@receiver(post_save)
+def printer(**kwargs):
+    print('hello world!')

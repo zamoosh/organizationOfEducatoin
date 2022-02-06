@@ -30,7 +30,7 @@ class LessonSerializerForUpdateTable(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = ['name', 'title', 'university_name', 'image']
+        fields = ['name', 'title', 'university_name', 'image', 'id']
 
 
 class HandoutSerializer(serializers.ModelSerializer):

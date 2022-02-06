@@ -1,5 +1,5 @@
 from .imports import *
 
 
-def add_notification(request):
+def show_notification(request):
     return render(request, '')

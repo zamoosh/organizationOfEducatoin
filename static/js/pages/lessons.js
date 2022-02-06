@@ -27,7 +27,7 @@ $(document).ready(function () {
         const input = $('.form input')[0];
         let data = new FormData($('.form')[0]);
         $.ajax({
-            url: "/lesson/save/lesson/",
+            url: "/lesson/save/",
             type: "POST",
             cache: false,
             processData: false,

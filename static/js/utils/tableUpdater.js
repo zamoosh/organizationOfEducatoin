@@ -1,7 +1,8 @@
 export function tableUpdater(data, element) {
     element.innerHTML += data.map(item => {
-        const {name, title, uni, image} = item;
+        const {name, title, uni, image, id} = item;
         return `<div class=" swiper-slide">
+                    <a href="/lesson/details/${id}">
                     <div class="p-1 shadow lesson-container">
                         <div class="text-center mb-1 lesson__image-container ">
                             <img src="${image}"
@@ -13,6 +14,7 @@ export function tableUpdater(data, element) {
                             <p class="">${uni}</p>
                         </div>
                     </div>
+                    </a>
                 </div>`
     }).join('');
 }

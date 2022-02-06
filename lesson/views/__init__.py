@@ -1,7 +1,7 @@
-from .add_lesson import add_lesson
+from .show_lesson import show_lesson
 from .save_lesson import save_lesson
-from .add_notification import add_notification
+from .show_notification import show_notification
 from .save_notification import save_notification
+from .detail_lesson import detail_lesson
 from .test import test
 from .test_render import test_render
-

@@ -20,4 +20,4 @@ class ArticleSerializer(ModelSerializer):
 
     class Meta:
         model = Article
-        exclude = ['create', 'update', 'id']
+        exclude = ['create', 'update']
