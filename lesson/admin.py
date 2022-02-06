@@ -24,5 +24,15 @@ class HandoutAdmin(admin.ModelAdmin):
     list_display = ['lesson', 'title', 'create', 'update']
 
 
+class NotificationAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('title', {'fields': ['title']}),
+        ('author', {'fields': ['author']}),
+        ('description', {'fields': ['description']}),
+    ]
+    list_display = ['title', 'author', 'description', 'create', 'update']
+
+
 admin.site.register(Lesson, LessonAdmin)
 admin.site.register(Handout, HandoutAdmin)
+admin.site.register(Notifications, NotificationAdmin)

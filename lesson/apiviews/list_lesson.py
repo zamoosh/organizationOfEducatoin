@@ -1,6 +1,6 @@
 from .imports import *
 
 
-class LessonListForUpdateTable(ListAPIView):
+class ListLesson(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializerForUpdateTable

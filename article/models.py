@@ -1,13 +1,9 @@
-import datetime
-import jdatetime
 from django.db import models
+from current_date import current_date
 
 
 def directory_name_article(instance, filename, just_date=False):
-    current_date = datetime.date.today()
-    year, month, day = current_date.year, current_date.month, current_date.day
-    j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
-    day, month, year = j.day, j.month, j.year
+    year, month, day = current_date()
     if just_date:
         return f'article/{year}/{month}/{day}/'
 

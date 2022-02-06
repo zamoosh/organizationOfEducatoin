@@ -1,6 +1,3 @@
-from django.http import JsonResponse
-from rest_framework.status import HTTP_200_OK
-
 from lesson.models import *
 from rest_framework import serializers
 
@@ -46,3 +43,15 @@ class HandoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Handout
         fields = ['lesson', 'title', 'author']
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        pass
+
+    def create(self, validated_data):
+        pass
+
+    class Meta:
+        model = Notifications
+        fields = ['title', 'description', 'slug', 'author']

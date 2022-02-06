@@ -1,8 +1,9 @@
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from jalali_date import datetime2jalali
-import datetime
-import jdatetime
 from user.models import Student
+from current_date import current_date
 
 
 def age_validator(age):
@@ -11,10 +12,7 @@ def age_validator(age):
 
 
 def directory_name(instance=None, filename=None, just_date=False):
-    current_date = datetime.date.today()
-    year, month, day = current_date.year, current_date.month, current_date.day
-    j = jdatetime.date.fromgregorian(day=day, month=month, year=year, locale='fa_IR')
-    day, month, year = j.day, j.month, j.year
+    year, month, day = current_date()
     if just_date:
         return f'lesson/{year}/{month}/{day}/'
 
@@ -54,6 +52,9 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.title}'
+
+    def delete(self, using=None, keep_parents=False):
+        pass
 
     def datetime_to_jalali_create(self):
         return datetime2jalali(self.create)
@@ -109,3 +110,9 @@ class Notifications(models.Model):
 
     def datetime_to_jalali_update(self):
         return datetime2jalali(self.update)
+
+
+@receiver(pre_delete, sender=Lesson)
+def lesson_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.image.delete(False)

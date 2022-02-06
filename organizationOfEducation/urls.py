@@ -9,7 +9,9 @@ urlpatterns = [
     path('lesson/', include("lesson.urls"), name='lesson'),
     path('article/', include("article.urls"), name='article'),
     path('api_lesson/', include('lesson.apiurls'), name='api lesson'),
+    path('api_notification/', include('lesson.apiurls'), name='api notification'),
     path('api_article/', include('article.apiurls'), name='api article'),
+    path('api_feedback/', include('feedback.apiurls'), name='api feedback'),
     path('mohammad/', include('lesson.urls'), name='mohammad')
 
 ]

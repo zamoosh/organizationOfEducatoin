@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'lesson',
     'user',
     'article',
+    'feedback',
     'jalali_date'
 ]
 
