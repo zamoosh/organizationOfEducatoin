@@ -6,5 +6,5 @@ urlpatterns = [
     # path('', login, name="login"),
     path('', index, name="index"),
     path('requests/',  requests),
-    path('lesson/',  lesson),
+    # path('lesson/',  lesson),
 ]

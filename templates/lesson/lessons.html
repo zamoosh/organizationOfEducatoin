@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group mb-5">
-                        <form action="" class="form">
+                        <form action="{% url 'lesson and notification:save lesson' %}" class="form" data-method="post">
                             {% csrf_token %}
                             <input type="file" name="image" class="file-uploader image_file" id="file-uploader">
                             <label class="file-uploader-label" for="file-uploader" id="img">
@@ -85,8 +85,6 @@
 
 {% endblock %}
 {% block mainjs %}
-    <script src="{% static "js/jquery.min.js" %}" type="module"></script>
-    <script src="{% static "js/index.js" %}" type="module"></script>
     <script src="{% static "js/pages/lessons.js" %}" type="module"></script>
 {% endblock %}
 

@@ -1,3 +1,5 @@
+from rest_framework.status import HTTP_400_BAD_REQUEST
+
 from .imports import *
 
 
@@ -14,7 +16,7 @@ def save_lesson(request):
             except (Lesson.DoesNotExist, Exception):
                 flag = False
             if flag:
-                return JsonResponse({'status': 'failed'}, status=HTTP_200_OK)
+                return JsonResponse({'status': 'this lesson is already exist!'}, status=HTTP_400_BAD_REQUEST)
             data = {}
             lesson = Lesson.objects.create(name=request.POST['name'],
                                            title=request.POST['title'],
@@ -35,4 +37,4 @@ def save_lesson(request):
             arr = [data]
             return JsonResponse(arr, status=HTTP_200_OK, safe=False)
         else:
-            return JsonResponse({'status': 'empty'}, status=HTTP_200_OK)
+            return JsonResponse({'status': 'please enter something!'}, status=HTTP_400_BAD_REQUEST)

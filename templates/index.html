@@ -2,11 +2,29 @@
 {% block title %}home{% endblock %}
 
 {% block content %}
+    <!-- main slider -->
+ <div class="" id="main-slider" >
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" ><img src="{% static "img/sliders/دروس.jpg" %}" alt=""></div>
+    <div class="swiper-slide"><img src="{% static "img/sliders/اطلاعيه ها (2).jpg" %}" alt=""></div>
+    <div class="swiper-slide"><img src="{% static "img/sliders/جزوات.jpg" %}" alt=""></div>
+  </div>
+    <div class="svg-rounded">
+        <img src="{% static "img/sliders/گردی اسلایدر.png" %}" alt="" >
+    </div>
 
+
+  <!-- If we need pagination -->
+{#  <div class="swiper-pagination"></div>#}
+</div>
+    </div>
 
     <!-- lesson section -->
     <div class="container mt-5 p-5 lesson--section " id="swiper-lesson">
-        <h3 class="  lesson--section__title">دروس استاد</h3>
+        <h3 class="  lesson--section__title title">دروس استاد</h3>
         <div class="swiper">
             <div class=" swiper-wrapper  ">
                 <!-- Slides -->
@@ -139,7 +157,7 @@
     <section class="container  notification--section" id="swiper-notification">
         <div class=" my-5 text-center  align-content-center">
             <div class=" px-6 notification-box">
-                <h3 class="notification-header">اطلاعیه ها</h3>
+                <h3 class="notification-header title">اطلاعیه ها</h3>
 
                 <div class="swiper  text-center ">
                     <!-- Additional required wrapper -->
@@ -196,7 +214,7 @@
         <div class="row my-5 text-center  align-content-center">
             <div class=" px-6 mb-5 mb-md-0 col-12  col-md-6 vertical-slider article-container " id="swiper-article-1">
                 <div class=" px-6 article-box">
-                    <h3 class="article-author">مقالات استاد</h3>
+                    <h3 class="article-author title">مقالات استاد</h3>
                     <div class="swiper-button-container">
                         <div class="swiper-button-prev"></div>
                     </div>
@@ -247,7 +265,7 @@
             </div>
             <div class=" px-6 col-12 col-md-6 vertical-slider article-container " id="swiper-article-2">
                 <div class=" px-6 article-box">
-                    <h3 class="article-author">مقالات برتر</h3>
+                    <h3 class="article-author title">مقالات برتر</h3>
                     <div class="swiper-button-container">
                         <div class="swiper-button-prev"></div>
                     </div>
@@ -305,6 +323,10 @@
 
 
 
+{% endblock %}
+
+{% block mainjs %}
+<script src="{% static "js/index.js" %}" type="module"></script>
 {% endblock %}
 
 
