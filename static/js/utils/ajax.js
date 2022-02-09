@@ -1,8 +1,9 @@
-export function ajax(url, instance, element) {
+export function ajax(url, instance) {
     $.ajax({
+        type : "GET",
         url: url,
         success: function (data) {
-            instance.tableUpdater(data, element);
+            instance.tableUpdater(data, instance.element);
         }
     });
 }
@@ -27,6 +28,7 @@ export function sendAjax(instance, form) {
             },
             data: data,
             success: function (data) {
+                instance.tableUpdater(data, instance.element);
             }
         });
         formResponse.always(function (data, textStatus) {
