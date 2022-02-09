@@ -25,8 +25,10 @@ class HandoutAdmin(admin.ModelAdmin):
 
 
 class NotificationAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ['slug']}
     fieldsets = [
         ('title', {'fields': ['title']}),
+        ('slug', {'fields': ['slug']}),
         ('author', {'fields': ['author']}),
         ('description', {'fields': ['description']}),
     ]

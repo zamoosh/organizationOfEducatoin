@@ -3,23 +3,23 @@
 
 {% block content %}
     <!-- main slider -->
- <div class="" id="main-slider" >
-<div class="swiper">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    <div class="swiper-slide" ><img src="{% static "img/sliders/دروس.jpg" %}" alt=""></div>
-    <div class="swiper-slide"><img src="{% static "img/sliders/اطلاعيه ها (2).jpg" %}" alt=""></div>
-    <div class="swiper-slide"><img src="{% static "img/sliders/جزوات.jpg" %}" alt=""></div>
-  </div>
-    <div class="svg-rounded">
-        <img src="{% static "img/sliders/گردی اسلایدر.png" %}" alt="" >
-    </div>
+    <div class="" id="main-slider">
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide"><img src="{% static "img/sliders/دروس.jpg" %}" alt=""></div>
+                <div class="swiper-slide"><img src="{% static "img/sliders/اطلاعيه ها (2).jpg" %}" alt=""></div>
+                <div class="swiper-slide"><img src="{% static "img/sliders/جزوات.jpg" %}" alt=""></div>
+            </div>
+            <div class="svg-rounded">
+                <img src="{% static "img/sliders/گردی اسلایدر.png" %}" alt="">
+            </div>
 
 
-  <!-- If we need pagination -->
-{#  <div class="swiper-pagination"></div>#}
-</div>
+            <!-- If we need pagination -->
+            {#  <div class="swiper-pagination"></div>#}
+        </div>
     </div>
 
     <!-- lesson section -->
@@ -28,118 +28,30 @@
         <div class="swiper">
             <div class=" swiper-wrapper  ">
                 <!-- Slides -->
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
 
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
 
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
 
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
+                {% for l in lessons %}
+                    <div class=" swiper-slide">
+                        <div class="p-1 shadow lesson-container">
+                            <div class="text-center mb-1 lesson__image-container ">
+                                {% if l.image %}
+                                    <img src="{{ l.image.url }}"
+                                         class="card-img-top  py-2 lesson__image" alt="">
+                                {% else %}
+                                    <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                                         class="card-img-top  py-2 lesson__image" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="p-3 lesson__content">
+                                <h4 class="lesson__title">{{ l.title }}</h4>
+                                <p class=" ">{{ l.name }}</p>
+                                <p class=" ">{{ l.university_name }}</p>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
+                {% endfor %}
 
 
             </div>
@@ -163,36 +75,17 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 1
+
+                        {% for n in notifications %}
+                            <div class="swiper-slide">
+                                <div class="notification">
+                                    <strong>author:</strong> {{ n.author }}
+                                    <hr/>
+                                    {{ n.title }}<br/>
+                                    {{ n.description }}
+                                </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 2
-                            </div>
-                        </div>
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 3
-                            </div>
-                        </div>
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 4
-                            </div>
-                        </div>
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 5
-                            </div>
-                        </div>
-                        <div class="swiper-slide    ">
-                            <div class="notification">
-                                اطلاعیه 6
-                            </div>
-                        </div>
+                        {% endfor %}
 
 
                     </div>
@@ -222,37 +115,19 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 1
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 2
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 3
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 4
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 5
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 6
-                                </div>
-                            </div>
 
+                            {% for a in articles %}
+                                {% if a.is_confirmed %}
+                                    <div class="swiper-slide">
+                                        <div class=" article">
+                                            <strong>author:</strong> {{ a.author }}
+                                            <hr/>
+                                            {{ a.title }}<br/>
+                                            {{ a.name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
 
                         </div>
 
@@ -273,36 +148,20 @@
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             <!-- Slides -->
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 1
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 2
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 3
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 4
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 5
-                                </div>
-                            </div>
-                            <div class="swiper-slide    ">
-                                <div class=" article">
-                                    مقاله 6
-                                </div>
-                            </div>
+
+                            {% for a in articles %}
+                                {% if not a.is_confirmed %}
+                                    <div class="swiper-slide">
+                                        <div class=" article">
+                                            <strong>author:</strong> {{ a.author }}
+                                            <hr/>
+                                            {{ a.title }}<br/>
+                                            {{ a.name }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
                         </div>
 
 
@@ -326,7 +185,7 @@
 {% endblock %}
 
 {% block mainjs %}
-<script src="{% static "js/index.js" %}" type="module"></script>
+    <script src="{% static "js/index.js" %}" type="module"></script>
 {% endblock %}
 
 

@@ -101,7 +101,7 @@ class Handout(models.Model):
 class Notifications(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField()
-    slug = models.SlugField(unique=True, default='notification')
+    slug = models.SlugField(unique=True)
     author = models.CharField(max_length=255, blank=True, default='admin')
     create = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
