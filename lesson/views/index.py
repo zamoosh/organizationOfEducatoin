@@ -1,5 +1,3 @@
-from article.models import Article
-from lesson.models import Lesson, Notifications
 from .imports import *
 
 

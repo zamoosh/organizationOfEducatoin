@@ -5,7 +5,7 @@ from organizationOfEducation import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("user.urls"), name='home'),
+    path('user/', include("user.urls"), name='home'),
     path('lesson/', include("lesson.urls"), name='lesson'),
     path('article/', include("article.urls"), name='article'),
     path('api_lesson/', include('lesson.apiurls'), name='api lesson'),

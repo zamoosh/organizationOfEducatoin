@@ -1,8 +1,13 @@
 from article.models import Article
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
 
 
-class ArticleSerializer(ModelSerializer):
+class ArticleSerializer(serializers.ModelSerializer):
+    file = serializers.SerializerMethodField(method_name='get_file_url')
+
+    def get_file_url(self, obj):
+        return self.context['server'] + obj.file.url
+
     def update(self, instance, validated_data):
         instance.name = validated_data['name']
         instance.title = validated_data['title']
@@ -20,4 +25,4 @@ class ArticleSerializer(ModelSerializer):
 
     class Meta:
         model = Article
-        exclude = ['create', 'update']
+        fields = ['name', 'title', 'subject', 'author', 'description', 'is_confirmed', 'is_master', 'file']

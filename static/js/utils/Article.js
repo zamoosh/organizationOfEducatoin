@@ -1,6 +1,10 @@
 export default class Article {
-    tableUpdater(data, element) {
-        element.innerHTML += data.map(item => {
+    constructor(element) {
+        this.element = element;
+    }
+
+    tableUpdater(data) {
+        this.element.innerHTML += data.map(item => {
             const {name} = item;
             return `<div class="swiper-slide">
                         <div class=" article">

@@ -11,9 +11,10 @@ class ArticleAdmin(admin.ModelAdmin):
         ('description', {'fields': ['description']}),
         ('file', {'fields': ['file']}),
         ('is confirmed by the master?', {'fields': ['is_confirmed']}),
+        ('is written by master?', {'fields': ['is_master']}),
 
     ]
-    list_display = ['title', 'subject', 'author', 'create', 'update', 'is_confirmed']
+    list_display = ['title', 'subject', 'author', 'create', 'update', 'is_master', 'is_confirmed', 'id']
     list_editable = ['author', 'is_confirmed']
     ordering = ['is_confirmed', 'author', 'create']
 

@@ -37,6 +37,12 @@ class ArticleManager(models.Manager):
     def not_confirmed(self):
         return self.filter(is_confirmed=False)
 
+    def is_master(self):
+        return self.filter(is_master=True)
+
+    def not_master(self):
+        return self.filter(is_master=False)
+
 
 class Article(models.Model):
     name = models.CharField(max_length=50, blank=False, default='article')
@@ -47,11 +53,16 @@ class Article(models.Model):
     update = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=False)
     is_confirmed = models.BooleanField(default=False, blank=True)
+    is_master = models.BooleanField(default=False, blank=True)
     file = models.FileField(upload_to=directory_name_article, blank=True)
 
     def __str__(self):
         return f'{self.title} {self.subject}'
 
+    def delete(self, using=None, keep_parents=False):
+        if self.file:
+            self.file.delete(self.file.name)
+        super().delete()
 
     @classmethod
     def confirmed(cls):

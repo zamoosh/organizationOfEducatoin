@@ -1,16 +1,15 @@
 export function ajax(url, instance) {
     $.ajax({
-        type : "GET",
         url: url,
         success: function (data) {
-            instance.tableUpdater(data, instance.element);
+            instance.tableUpdater(data);
         }
     });
 }
 
 export function sendAjax(instance, form) {
     const method = form.dataset.method.toUpperCase();
-    const url = form.action;
+    // const method = form.data("method").toUpperCase();
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const input = form.querySelector('input');
@@ -28,7 +27,7 @@ export function sendAjax(instance, form) {
             },
             data: data,
             success: function (data) {
-                instance.tableUpdater(data, instance.element);
+                instance.tableUpdater(data);
             }
         });
         formResponse.always(function (data, textStatus) {

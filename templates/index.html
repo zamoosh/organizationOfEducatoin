@@ -30,7 +30,7 @@
                 <!-- Slides -->
 
                 {% for l in lessons %}
-                    <a href="#" class=" swiper-slide">
+                    <a href="{% url 'lesson and notification:details lesson' l.id %}" class=" swiper-slide">
                         <div class="p-1 shadow lesson-container">
                             <div class="text-center mb-1 lesson__image-container ">
                                 {% if l.image %}
@@ -114,14 +114,14 @@
 
                             {% for a in articles %}
                                 {% if a.is_confirmed %}
-                                    <div class="swiper-slide">
+                                    <a href="#" class="swiper-slide">
                                         <div class=" article">
                                             <strong>author:</strong> {{ a.author }}
                                             <hr/>
                                             {{ a.title }}<br/>
                                             {{ a.name }}
                                         </div>
-                                    </div>
+                                    </a>
                                 {% endif %}
                             {% endfor %}
 
@@ -147,19 +147,18 @@
 
                             {% for a in articles %}
                                 {% if not a.is_confirmed %}
-                                    <div class="swiper-slide">
+                                    <a href="#" class="swiper-slide">
                                         <div class=" article">
                                             <strong>author:</strong> {{ a.author }}
                                             <hr/>
                                             {{ a.title }}<br/>
                                             {{ a.name }}
                                         </div>
-                                    </div>
+                                    </a>
                                 {% endif %}
                             {% endfor %}
 
                         </div>
-
 
                     </div>
                     <div class="swiper-button-container">
@@ -171,13 +170,6 @@
         </div>
     </section>
     <!-- end article section -->
-
-
-
-
-
-
-
 {% endblock %}
 
 {% block mainjs %}

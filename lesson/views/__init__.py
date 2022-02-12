@@ -5,3 +5,4 @@ from .save_notification import save_notification
 from .detail_lesson import detail_lesson
 from .test import test
 from .test_render import test_render
+from .index import index

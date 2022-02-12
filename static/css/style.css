@@ -683,6 +683,11 @@ main slider
     max-height: 100vh;
 }
 
+
+.swiper-slide {
+    width: auto !important;
+}
+
 .svg-rounded {
     z-index: 1000 !important;
     position: absolute;

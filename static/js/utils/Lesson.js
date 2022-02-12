@@ -3,8 +3,8 @@ export default class Lesson {
         this.element = element;
     }
 
-    tableUpdater(data, element) {
-        element.innerHTML += data.map(item => {
+    tableUpdater(data) {
+        this.element.innerHTML += data.map(item => {
             const {name, title, uni, image} = item;
             return `<div class="swiper-slide">
                         <div class="p-1 shadow lesson-container">
