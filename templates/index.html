@@ -29,10 +29,8 @@
             <div class=" swiper-wrapper  ">
                 <!-- Slides -->
 
-
-
                 {% for l in lessons %}
-                    <div class=" swiper-slide">
+                    <a href="#" class=" swiper-slide">
                         <div class="p-1 shadow lesson-container">
                             <div class="text-center mb-1 lesson__image-container ">
                                 {% if l.image %}
@@ -48,11 +46,9 @@
                                 <p class=" ">{{ l.name }}</p>
                                 <p class=" ">{{ l.university_name }}</p>
                             </div>
-
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
-
 
             </div>
             <!-- If we need navigation buttons -->

@@ -1,14 +1,9 @@
 from django.db import models
-from django.db.models.signals import pre_delete, post_save
+from django.db.models.signals import pre_delete
 from django.dispatch import receiver
-from jalali_date import datetime2jalali
 from user.models import Student
+from jalali_date import datetime2jalali
 from current_date import current_date
-
-
-def age_validator(age):
-    if not (18 <= age <= 90):
-        raise ValueError(f"age should be in range 18 to 75")
 
 
 def directory_name(instance=None, filename=None, just_date=False):
@@ -16,26 +11,6 @@ def directory_name(instance=None, filename=None, just_date=False):
     if just_date:
         return f'lesson/{year}/{month}/{day}/'
 
-    # def returner():
-    #     try:
-    #         flag = instance.lesson.name
-    #         flag = 'handout'
-    #     except (AttributeError, Exception):
-    #         flag = 'lesson'
-    #     if filename is not None:
-    #         if flag == 'lesson':
-    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
-    #         else:
-    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
-    #     else:
-    #         if flag == 'lesson':
-    #             return '%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name)
-    #         else:
-    #             return '%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name)
     if isinstance(instance, Lesson):
         return '%s/%s/%s/%s/%s' % ('lesson', year, month, day, filename)
     elif isinstance(instance, Handout):
@@ -57,8 +32,9 @@ class Lesson(models.Model):
         return f'{self.name} {self.title}'
 
     def delete(self, using=None, keep_parents=False):
-        print('hello world!')
-        pass
+        if self.image:
+            self.image.delete(self.image.name)
+        super().delete()
 
     def datetime_to_jalali_create(self):
         return datetime2jalali(self.create)
@@ -75,6 +51,9 @@ class Exam(models.Model):
     def __str__(self):
         return f'exam: {self.title}'
 
+    def delete(self, using=None, keep_parents=False):
+        super().delete()
+
     def datetime_to_jalali_create(self):
         return datetime2jalali(self.create)
 
@@ -90,6 +69,11 @@ class Handout(models.Model):
 
     def __str__(self):
         return f'{self.lesson} {self.title}'
+
+    def delete(self, using=None, keep_parents=False):
+        if self.file:
+            self.file.delete(self.file.name)
+        super().delete()
 
     def datetime_to_jalali_create(self):
         return datetime2jalali(self.create)
@@ -109,6 +93,9 @@ class Notifications(models.Model):
     def __str__(self):
         return f'notification {self.title}'
 
+    def delete(self, using=None, keep_parents=False):
+        super().delete()
+
     def datetime_to_jalali_create(self):
         return datetime2jalali(self.create)
 
@@ -124,8 +111,3 @@ def lesson_delete(**kwargs):
             ins.image.delete(False)
     elif isinstance(ins, Handout):
         ins.lesson.image.delete(False)
-
-
-@receiver(post_save)
-def printer(**kwargs):
-    print('hello world!')

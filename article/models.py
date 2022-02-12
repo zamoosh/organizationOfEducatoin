@@ -30,6 +30,14 @@ def directory_name_article(instance, filename, just_date=False):
     return '%s/%s/%s/%s/%s' % ('article', year, month, day, filename)
 
 
+class ArticleManager(models.Manager):
+    def is_confirmed(self):
+        return self.filter(is_confirmed=True)
+
+    def not_confirmed(self):
+        return self.filter(is_confirmed=False)
+
+
 class Article(models.Model):
     name = models.CharField(max_length=50, blank=False, default='article')
     title = models.CharField(max_length=255, blank=False)
@@ -43,3 +51,14 @@ class Article(models.Model):
 
     def __str__(self):
         return f'{self.title} {self.subject}'
+
+
+    @classmethod
+    def confirmed(cls):
+        return cls.objects.filter(is_confirmed=True)
+
+    @classmethod
+    def not_confirmed(cls):
+        return cls.objects.filter(is_confirmed=False)
+
+    objects = ArticleManager()

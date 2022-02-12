@@ -11,5 +11,5 @@ urlpatterns = [
     path('save/notification/', save_notification, name='save notification'),
 
     path('test-render/', test_render, name='render the test'),
-    path('test/', test, name='test for csrf')
+    path('test/', test, name='test')
 ]
