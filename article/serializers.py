@@ -9,7 +9,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         return self.context['server'] + obj.file.url
 
     def update(self, instance, validated_data):
-        instance.name = validated_data['name']
+        instance.article = validated_data['name']
         instance.title = validated_data['title']
         instance.subject = validated_data['subject']
         instance.author = validated_data['author']

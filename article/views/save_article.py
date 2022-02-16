@@ -28,7 +28,7 @@ def save_article(request):
                                              )
             if not request.FILES:
                 data = {
-                    'name': article.name,
+                    'name': article.article,
                     'title': article.title,
                     'subject': article.subject,
                     'dec': article.description
@@ -39,7 +39,7 @@ def save_article(request):
                 path = settings.MEDIA_ROOT
                 path += directory_name_article(Article, filename=None)
                 file = FileSystemStorage(location=path)
-                Article.file = file.save(article_file.name, article_file)
+                Article.file = file.save(article_file.article, article_file)
                 data['file'] = file.location
             article.save()
             arr = [data]

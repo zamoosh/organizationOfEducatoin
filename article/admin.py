@@ -14,7 +14,7 @@ class ArticleAdmin(admin.ModelAdmin):
         ('is written by master?', {'fields': ['is_master']}),
 
     ]
-    list_display = ['title', 'subject', 'author', 'create', 'update', 'is_master', 'is_confirmed', 'id']
+    list_display = ['name', 'title', 'subject', 'author', 'create', 'update', 'is_master', 'is_confirmed', 'id']
     list_editable = ['author', 'is_confirmed']
     ordering = ['is_confirmed', 'author', 'create']
 

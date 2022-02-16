@@ -24,7 +24,7 @@ def save_lesson(request):
                                            )
             if not request.FILES:
                 data = {
-                    'name': lesson.name,
+                    'name': lesson.article,
                     'title': lesson.title,
                     'uni': lesson.university_name,
                 }
