@@ -1,0 +1,134 @@
+{% extends "base.html" %}{% load static %}
+{% block title %}lessons{% endblock %}
+
+
+{% block innerstyle %}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <div class="container mb-5 mt-5 p-5">
+        <div class="row">
+            <div class="col-3 p-2 lesson--section">
+                <div class="">
+                    <header>
+                        <h4>لیست دانشجویان </h4>
+                        <h5>تعداد دانشجویان</h5>
+                    </header>
+                    <div class="mb-5">
+
+                        <div class="student-list-container" style="max-height: 30vh;overflow-y: scroll;direction: rtl">
+                            <div class="mt-1 table-responsive table-container rounded-table-container">
+                                <table class="table rounded-table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ردیف</th>
+                                        <th scope="col">نام دانشجو</th>
+
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>مصطفی شرعیات</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>مصطفی شرعیات</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>مصطفی شرعیات</td>
+
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>مصطفی شرعیات</td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-1 shadow lesson--section">
+                    <div class="text-center mb-1 lesson__image-container ">
+                        <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
+                             class="card-img-top  py-2 lesson__image" alt="">
+                    </div>
+                    <div class=" lesson__content">
+                        <h4 class="lesson__title">{{ lesson.title }}</h4>
+                        <p class=" ">{{ lesson.university_name }}</p>
+                        <p class=" ">{{ lesson.name }}</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-3 lesson--section">
+                <div>
+                    <div class="group text-center sign-up-button">
+                        <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                    <div class="group text-center sign-up-button">
+                        <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                    <div class="group text-center sign-up-button">
+                        <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                    <div class="group text-center sign-up-button">
+                        <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                    <div class="group text-center sign-up-button">
+                        <input type="submit" class="button input input--transparent input--bold" value="ارسال">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+{% block mainjs %}
+    <script src="{% static "js/pages/lesson.js" %}" type="module"></script>
+{% endblock %}
+
+
+
+
+{% block testjs %}
+
+
+
+
+{% endblock %}
+
+
+
+

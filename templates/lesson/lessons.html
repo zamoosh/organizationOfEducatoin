@@ -34,123 +34,51 @@
                 data-bs-target="#exampleModal">افزودن درس
         </button>
         <div class="swiper swiper-container">
-            <div class=" swiper-wrapper" style="margin: 0 auto">
+            <div class="swiper-wrapper lesson-table" style="margin: 0 auto;">
                 <!-- Slides -->
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
 
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class=" swiper-slide">
-                    <div class="p-1 shadow lesson-container">
-                        <div class="text-center mb-1 lesson__image-container ">
-                            <img src="{% static "img/index/1200px-University_of_Tehran_logo.png" %}"
-                                 class="card-img-top  py-2 lesson__image" alt="">
-                        </div>
-                        <div class="p-3 lesson__content">
-                            <h4 class="lesson__title">ریز پردازنده</h4>
-                            <p class=" ">دانشگاه تهران/پردیس فارابی</p>
-                            <p class=" ">یکشنبه</p>
-                        </div>
-
-                    </div>
-                </div>
             </div>
             <div class="swiper-pagination-container"></div>
             <div class="swiper-pagination"></div>
         </div>
-
-
     </div>
 
 
     <!-- Modal -->
-    <div class="modal modal-lesson fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal modal-lesson fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action=" ">
-                        <div class="form-group mb-5">
-                            <input type="file" name="file" class="file-uploader" id="file-uploader">
-                            <label class="file-uploader-label" for="file-uploader">
-
+                    <div class="form-group mb-5">
+                        <form action="{% url 'lesson and notification:save lesson' %}" class="form" data-method="post">
+                            {% csrf_token %}
+                            <input type="file" name="image" class="file-uploader image_file" id="file-uploader">
+                            <label class="file-uploader-label" for="file-uploader" id="img">
                                 <div class="file-uploader-icon-container">
                                     <i class="fas fa-file-upload"></i>
                                 </div>
-
                             </label>
-                        </div>
-                        <div class="group d-flex flex-column mb-5 ">
-                            <input id="pass" type="text" class="input" name="email" placeholder="نام درس">
-                        </div>
-                        <div class="group d-flex flex-column mb-5 ">
-                            <input id="pass" type="text" class="input" name="email" placeholder="دانشگاه">
-                        </div>
-                        <div class="group d-flex flex-column  ">
-                            <textarea name="" id="" class="input" cols="30" rows="10" placeholder="توضیحات"></textarea>
-                        </div>
+                            <div class="group d-flex flex-column mb-5 ">
+                                <input id="pass" type="text" class="input" name="name" placeholder="نام درس">
+                            </div>
+                            <div class="group d-flex flex-column mb-5 ">
+                                <input id="pass" type="text" class="input" name="title" placeholder="موضوع">
+                            </div>
+                            <div class="group d-flex flex-column  ">
+                                <input id="pass" type="text" class="input" name="uni" placeholder="دانشگاه">
+                            </div>
+                            <div class="group text-center sign-up-button">
+                                <input id="post" type="submit" class="button input input--transparent input--bold"
+                                       value="ارسال">
+                            </div>
+                        </form>
 
-                        <div class="group text-center sign-up-button">
-                            <input type="submit" class="button input input--transparent input--bold" value="ارسال">
-                        </div>
-
-                    </form>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -161,16 +89,5 @@
     <script src="{% static "js/pages/lessons.js" %}" type="module"></script>
 {% endblock %}
 
-
-
-
 {% block testjs %}
-
-
-
-
 {% endblock %}
-
-
-
-

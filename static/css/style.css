@@ -3,6 +3,10 @@
   fonts
 ===========================
 */
+* {
+    padding: 0;
+    margin: 0;
+}
 
 @font-face {
     font-family: "iransans";
@@ -15,16 +19,13 @@
     src: url(./../font/iransans/IRANSansWeb_Bold.woff) format("woff"), url(./../font/iransans/IRANSansWeb_Bold.woff2) format("woff2"), url(./../font/iransans/IRANSansWeb_Bold.eot) format("eot"), url(./../font/iransans/IRANSansWeb_Bold.ttf);
     font-weight: 700;
 }
+
 @font-face {
     font-family: "reyhaneh";
     src: url("./../font/reyhaneh/REYHANEH.woff") format("woff"),
     url("./../font/reyhaneh/REYHANEH.woff2") format("woff2"),
     url("./../font/reyhaneh/REYHANEH.ttf") ;
 }
-
-
-
-
 
 
 /*
@@ -45,7 +46,7 @@ root setting
     --ff-primary: "iransans", sans-serif;
     --ff-pirmary-bold: "iransansBold", sans-serif;
     --ff-secondary: "Open Sans", sans-serif;
-    --ff-third: "reyhaneh",  sans-serif;
+    --ff-third: "reyhaneh", sans-serif;
     --transition: all 0.3s linear;
     --spacing: 0.1rem;
     --radius: 0.75rem;
@@ -109,10 +110,11 @@ button {
 input:focus {
     outline: 0;
 }
+
 textarea:focus,
-textarea:active{
-    box-shadow: none!important;
-    outline: none!important;
+textarea:active {
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 h1,
@@ -172,8 +174,8 @@ h4 {
     }
 }
 
-.sections{
-      background: var(--gradiant-background-1);
+.sections {
+    background: var(--gradiant-background-1);
     background: var(--gradiant-background-2);
     border-radius: var(--radius);
 }
@@ -185,7 +187,7 @@ title
 =================
 
  */
-.title{
+.title {
     font-family: var(--ff-third);
     font-size: 2rem;
     color: var(--clr-primary-1);
@@ -378,50 +380,57 @@ end footer section
 table
 =================
  */
-.rounded-table-container{
+.rounded-table-container {
     border: 2px solid var(--clr-primary-1);
     border-radius: 1rem;
 }
-.rounded-table{
-    color:var(--clr-primary-1);
+
+.rounded-table {
+    color: var(--clr-primary-1);
     vertical-align: middle;
     border-collapse: collapse;
-    margin-bottom: 0!important;
+    margin-bottom: 0 !important;
 }
-.rounded-table tr:first-child th:first-child{
+
+.rounded-table tr:first-child th:first-child {
     width: 20px;
 }
-.rounded-table tr th:first-child{
+
+.rounded-table tr th:first-child {
     text-align: center;
 }
 
-.rounded-table th,.rounded-table td {
-  font-family: var(--ff-pirmary-bold);
-  padding: .5em;
-  border-bottom: 2px solid var(--clr-primary-1)!important;
-    border-left: 2px solid var(--clr-primary-1)!important;
-}
-.rounded-table tbody tr td, .rounded-table tbody tr:last-child th{
-    border-bottom: none!important;
-}
-.rounded-table thead tr th:last-child ,.rounded-table tbody tr td:last-child {
-    border-left: 0!important;
+.rounded-table th, .rounded-table td {
+    font-family: var(--ff-pirmary-bold);
+    padding: .5em;
+    border-bottom: 2px solid var(--clr-primary-1) !important;
+    border-left: 2px solid var(--clr-primary-1) !important;
 }
 
+.rounded-table tbody tr:last-child td, .rounded-table tbody tr:last-child th {
+    border-bottom: none !important;
+}
+
+.rounded-table thead tr th:last-child, .rounded-table tbody tr td:last-child {
+    border-left: 0 !important;
+}
 
 
-
-.table-svg-image{
+.table-svg-image {
     width: 25px;
+    text-align: center;
+    cursor: pointer;
 }
 
+.table-svg-image img {
+    width: 40px;
+}
 
 /*
 ====================
 end table section
 ====================
 */
-
 
 
 /*
@@ -660,22 +669,31 @@ end login
 main slider
 ===================
  */
-#main-slider .swiper{
+#main-slider .swiper {
     background: var(--clr-primary-2);
     position: relative;
 }
-#main-slider .swiper-slide img{
-    object-fit: contain!important;
+
+#main-slider .swiper-slide img {
+    object-fit: contain !important;
     max-height: 100vh;
 }
-#main-slider .swiper-slide{
-   max-height: 100vh;
+
+#main-slider .swiper-slide {
+    max-height: 100vh;
 }
-.svg-rounded{
-    z-index: 1000!important;
+
+
+.swiper-slide {
+    width: auto !important;
+}
+
+.svg-rounded {
+    z-index: 1000 !important;
     position: absolute;
     bottom: -10%;
 }
+
 /*
 ===============
 article section
@@ -752,7 +770,8 @@ swiper slider section
     transform: rotate(90deg);
     bottom: 0;
 }
-.swiper-pagination-container{
+
+.swiper-pagination-container {
     position: relative;
 }
 
@@ -761,7 +780,6 @@ swiper slider section
 end swiper slider section
 ===============
  */
-
 
 
 /*
@@ -828,7 +846,8 @@ file uploader
     left: 50%;
     transform: translateX(-50%);
 }
-.file-uploader-label--rounded-container{
+
+.file-uploader-label--rounded-container {
     color: var(--clr-primary-1);
     font-weight: 900;
 }
@@ -847,9 +866,7 @@ file uploader
 }
 
 
-
-
-.file-uploader-label--rounded{
+.file-uploader-label--rounded {
     border-radius: 50%;
     height: 50px;
     width: 50px;
@@ -859,11 +876,10 @@ file uploader
     align-items: center;
     background: var(--clr-primary-1);
     cursor: pointer;
-padding: .5rem;
+    padding: .5rem;
     color: var(--clr-primary-2);
 
 }
-
 
 
 .file-uploader-label .file-uploader-icon-container {
@@ -878,7 +894,8 @@ padding: .5rem;
     transition: var(--transition);
 
 }
-.file-uploader-label--file{
+
+.file-uploader-label--file {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -891,13 +908,10 @@ padding: .5rem;
 
 }
 
-.file-uploader-label--file__text{
+.file-uploader-label--file__text {
     color: var(--clr-primary-1);
     font-family: var(--ff-pirmary-bold);
 }
-
-
-
 
 
 @media screen and (min-width: 968px) {
@@ -924,12 +938,9 @@ profile
     border-radius: var(--radius);
 }
 
-.profile-container input, .profile-container select{
-    padding: 5px!important;
+.profile-container input, .profile-container select {
+    padding: 5px !important;
 }
-
-
-
 
 
 .more-information__profile {
@@ -956,15 +967,17 @@ profile
     }
 
 }
+
 /*
 ===============
 lesson section
 ===============
  */
-.lesson--section{
+.lesson--section {
     position: relative;
 }
-.lesson--section .add-lesson{
+
+.lesson--section .add-lesson {
     position: absolute;
     top: 20px;
     left: 10px;
@@ -996,10 +1009,10 @@ lesson section
 .lesson-container {
     margin-right: 2rem;
 }
-.modal-lesson .file-uploader-label{
+
+.modal-lesson .file-uploader-label {
     background-image: url("./../img/defualts/graduation-cap.jpg")
 }
-
 
 
 @media screen and (min-width: 578px) {
@@ -1009,24 +1022,33 @@ lesson section
     }
 
 }
+
 /*
 ===============
 note section
 ===============
  */
-.add-note--section{
+.add-note--section {
     max-width: 60vw;
     margin: 0 auto;
 }
 
 
-@media screen and (min-width: 768px){
-    .add-note--section{
-    max-width: 600px;
+@media screen and (min-width: 768px) {
+    .add-note--section {
+        max-width: 600px;
     }
 }
 
 
+/*
+================
+each lesson
+================
+
+ */
 
 
-
+.student-list-container th, .student-list-container td {
+    background: var(--clr-white);
+}

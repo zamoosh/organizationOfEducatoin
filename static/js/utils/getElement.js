@@ -5,5 +5,4 @@ export function getElement(selection){
     if(element.length ===1)
         return element[0]
     return element;
-
 }

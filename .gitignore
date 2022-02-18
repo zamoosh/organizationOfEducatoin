@@ -1,4 +1,10 @@
 db.sqlite3
 venv/
+node/
 .idea/
 __pycache__/
+*/migrations/
+migrations/
+templates/lesson/test_for_mohammad.html
+lesson/views/test.py
+lesson/views/test_render.py
