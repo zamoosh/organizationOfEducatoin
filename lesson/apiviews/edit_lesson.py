@@ -20,7 +20,8 @@ class EditLesson(RetrieveUpdateDestroyAPIView):
                 if extension in ACCEPTED_EXTENSIONS:
                     lesson.image.delete(save=False)
                     lesson.image = request.FILES.get('image')
-                return Response(data='only images can be pass', status=HTTP_400_BAD_REQUEST, exception=True)
+                else:
+                    return Response(data='only images can be pass', status=HTTP_400_BAD_REQUEST, exception=True)
             context = {'request': request}
             serializer = LessonSerializerForUpdateTable(lesson, context=context)
             lesson.save()
