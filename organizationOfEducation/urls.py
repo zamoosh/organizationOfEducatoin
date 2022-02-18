@@ -5,9 +5,12 @@ from organizationOfEducation import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include("user.urls"), name='home'),
-    path('lesson/', include("lesson.urls"), name='lesson'),
-    path('article/', include("article.urls"), name='article'),
+    path('user/', include('user.urls'), name='home'),
+    path('lesson/', include('lesson.urls'), name='lesson'),
+    path('article/', include('article.urls'), name='article'),
+
+    path('api-auth/', include('rest_framework.urls'), name='api auth'),
+
     path('api_lesson/', include('lesson.apiurls'), name='api lesson'),
     path('api_notification/', include('lesson.apiurls'), name='api notification'),
     path('api_article/', include('article.apiurls'), name='api article'),

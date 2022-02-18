@@ -10,7 +10,7 @@ class LessonAdmin(admin.ModelAdmin):
         ('image', {'fields': ['image']}),
         ('student', {'fields': ['student']}),
     ]
-    list_display = ['name', 'title', 'university_name', 'create', 'update']
+    list_display = ['name', 'title', 'university_name', 'create', 'update', 'id']
 
 
 class HandoutAdmin(admin.ModelAdmin):

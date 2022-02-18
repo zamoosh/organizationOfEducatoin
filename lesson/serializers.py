@@ -1,57 +1,32 @@
 from lesson.models import *
 from rest_framework import serializers
+from jalali_date import datetime2jalali
 
 
 class LessonSerializer(serializers.ModelSerializer):
-    def update(self, instance, validated_data):
-        pass
-
-    def create(self, validated_data):
-        pass
-
     class Meta:
         model = Lesson
-        fields = ['name',
-                  'title',
-                  'university_name',
-                  'student', 'student_list',
-                  'grades_list',
-                  'create',
-                  'update'
-                  ]
+        fields = ['name', 'title', 'university_name', 'student', 'student_list', 'grades_list', 'create', 'update']
 
 
 class LessonSerializerForUpdateTable(serializers.ModelSerializer):
-    def update(self, instance, validated_data):
-        pass
-
-    def create(self, validated_data):
-        pass
+    # create = serializers.SerializerMethodField()
+    #
+    # def get_create(self, obj):
+    #     return str(datetime2jalali(obj.create))
 
     class Meta:
         model = Lesson
-        fields = ['name', 'title', 'university_name', 'image', 'id']
+        fields = ['name', 'title', 'university_name', 'create', 'update', 'image', 'id']
 
 
 class HandoutSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        pass
-
-    def update(self, instance, validated_data):
-        pass
-
     class Meta:
         model = Handout
         fields = ['lesson', 'title', 'author']
 
 
 class NotificationSerializer(serializers.ModelSerializer):
-    def update(self, instance, validated_data):
-        pass
-
-    def create(self, validated_data):
-        pass
-
     class Meta:
         model = Notifications
         fields = ['title', 'description', 'slug', 'author']

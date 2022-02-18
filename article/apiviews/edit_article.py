@@ -4,6 +4,8 @@ from .imports import *
 class EditArticle(RetrieveUpdateDestroyAPIView):
     def __init__(self, **kwargs):
         self.article = None
+        if 'pk' in kwargs:
+            self.article = None
         super().__init__(**kwargs)
 
     def get(self, request, *args, **kwargs):
@@ -24,3 +26,6 @@ class EditArticle(RetrieveUpdateDestroyAPIView):
             return self.article.name
         else:
             return super(EditArticle, self).get_view_name()
+
+    def get_view_description(self, html=False):
+        return 'kir'
