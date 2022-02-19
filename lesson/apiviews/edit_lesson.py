@@ -5,9 +5,6 @@ ACCEPTED_EXTENSIONS = ['png', 'jpeg', 'jpg']
 
 class EditLesson(RetrieveUpdateDestroyAPIView):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def put(self, request, *args, **kwargs):
         if request.method == 'PUT':
             lesson = Lesson.objects.get(id=kwargs['pk'])
@@ -34,7 +31,5 @@ class EditLesson(RetrieveUpdateDestroyAPIView):
         serializer = LessonSerializerForUpdateTable(lesson, context=context)
         return Response(serializer.data, status=HTTP_200_OK)
 
-    def get_serializer_class(self):
-        return LessonSerializerForUpdateTable
-
+    serializer_class = LessonSerializerForUpdateTable
     permission_classes = [IsAdminUser]

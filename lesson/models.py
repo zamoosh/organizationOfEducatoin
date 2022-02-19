@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import pre_delete
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from user.models import Student
 from jalali_date import datetime2jalali
@@ -103,11 +103,12 @@ class Notifications(models.Model):
         return datetime2jalali(self.update)
 
 
-@receiver(signal=pre_delete)
-def lesson_delete(**kwargs):
+@receiver(signal=post_delete)
+def delete_from_admin(**kwargs):
     ins = kwargs['instance']
     if isinstance(ins, Lesson):
         if ins.image:
             ins.image.delete(False)
     elif isinstance(ins, Handout):
-        ins.lesson.image.delete(False)
+        if ins.file:
+            ins.file.delete(False)
