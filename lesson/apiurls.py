@@ -6,6 +6,8 @@ urlpatterns = [
     path('lessons/', ListLesson.as_view(), name='lessons'),
     path('lesson/<int:pk>/', EditLesson.as_view(), name='lesson edit'),
     path('notifications/', ListNotification.as_view(), name='notifications'),
-    path('notification/<int:pk>/', EditNotification.as_view(), name='notification edit')
+    path('notification/<int:pk>/', EditNotification.as_view(), name='notification edit'),
+    path('handouts/', ListHandout.as_view(), name='handouts'),
+    path('handout/<int:pk>/', EditHandout.as_view(), name='handout edit')
 
 ]

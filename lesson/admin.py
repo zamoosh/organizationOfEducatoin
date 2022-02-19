@@ -32,7 +32,7 @@ class NotificationAdmin(admin.ModelAdmin):
         ('author', {'fields': ['author']}),
         ('description', {'fields': ['description']}),
     ]
-    list_display = ['title', 'author', 'description', 'create', 'update']
+    list_display = ['title', 'author', 'description', 'create', 'update', 'id']
 
 
 admin.site.register(Lesson, LessonAdmin)
