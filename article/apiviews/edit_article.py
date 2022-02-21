@@ -7,11 +7,10 @@ class EditArticle(RetrieveUpdateDestroyAPIView):
         self.article = None
 
     def get(self, request, *args, **kwargs):
-        article = Article.objects.get(id=kwargs['pk'])
+        article = get_object_or_404(Article, id=kwargs['pk'])
         self.article = article
         context = {'request': request}
-        serializer = ArticleSerializer(article, context=context)
-        return Response(serializer.data, status=HTTP_200_OK)
+        return Response(ArticleSerializer(article, context=context).data, status=HTTP_200_OK)
 
     def get_view_name(self):
         if hasattr(self.article, 'name'):

@@ -3,7 +3,7 @@ from .imports import *
 
 class EditHandout(RetrieveUpdateDestroyAPIView):
     def get(self, request, *args, **kwargs):
-        handout = Handout.objects.get(id=kwargs['pk'])
+        handout = get_object_or_404(Handout, id=kwargs['pk'])
         context = {'request': request}
         return Response(HandoutSerializer2(handout, context=context).data, status=HTTP_200_OK)
 
@@ -27,9 +27,8 @@ class EditHandout(RetrieveUpdateDestroyAPIView):
             handout.description = request.data.get('description')
             handout.author = request.data.get('author')
             context = {'request': request}
-            serializer = HandoutSerializer(handout, context=context)
             handout.save()
-            return Response(serializer.data, status=HTTP_200_OK)
+            return Response(HandoutSerializer(handout, context=context).data, status=HTTP_200_OK)
 
     serializer_class = HandoutSerializer
     permission_classes = [IsAdminUser]
