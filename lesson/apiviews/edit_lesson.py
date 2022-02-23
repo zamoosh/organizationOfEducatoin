@@ -10,7 +10,7 @@ class EditLesson(RetrieveUpdateDestroyAPIView):
         return Response(LessonSerializerForUpdateTable(lesson, context=context).data, status=HTTP_200_OK)
 
     def put(self, request, *args, **kwargs):
-        if request.method == 'PUT':
+        if request.method == 'PUT' or request.method == 'PATCH':
             lesson = get_object_or_404(Lesson, id=kwargs['pk'])
             lesson.name = request.POST.get('name')
             lesson.title = request.POST.get('title')
@@ -27,6 +27,9 @@ class EditLesson(RetrieveUpdateDestroyAPIView):
             lesson.save()
             return Response(LessonSerializerForUpdateTable(lesson, context=context).data, status=HTTP_200_OK)
         return Response(None, status=HTTP_405_METHOD_NOT_ALLOWED)
+
+    def patch(self, request, *args, **kwargs):
+        return self.put(request, *args, **kwargs)
 
     serializer_class = LessonSerializerForUpdateTable
     permission_classes = [IsAdminUser]

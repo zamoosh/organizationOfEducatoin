@@ -28,6 +28,12 @@ class Lesson(models.Model):
     update = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to=directory_name, blank=True)
 
+    class Meta:
+        permissions = [
+            ('can_drive', 'Can drive'),
+            ('can_answer', 'Can answer question'),
+        ]
+
     def __str__(self):
         return f'{self.name} {self.title}'
 
