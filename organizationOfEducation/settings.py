@@ -132,6 +132,12 @@ MEDIA_URL = 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny']
+}
+
+AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+
 # default settings
 JALALI_DATE_DEFAULTS = {
     'Strftime': {

@@ -7,6 +7,7 @@ urlpatterns = [
     path('lessons/', show_lesson, name='list lesson'),
     path('details/<int:pk>', detail_lesson, name='details lesson'),
     path('save/', save_lesson, name='save lesson'),
+    path('see/', see_secret, name='see'),
 
     path('notification/', show_notification, name='show notification'),
     path('save/notification/', save_notification, name='save notification'),

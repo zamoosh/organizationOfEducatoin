@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+
 from current_date import current_date
 
 
@@ -6,27 +9,6 @@ def directory_name_article(instance, filename, just_date=False):
     year, month, day = current_date()
     if just_date:
         return f'article/{year}/{month}/{day}/'
-
-    # def returner():
-    #     try:
-    #         flag = instance.lesson.name
-    #         flag = 'handout'
-    #     except (AttributeError, Exception):
-    #         flag = 'lesson'
-    #     if filename is not None:
-    #         if flag == 'lesson':
-    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name, filename)
-    #         else:
-    #             return '%s/%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name, filename)
-    #     else:
-    #         if flag == 'lesson':
-    #             return '%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'lesson', instance.title, year, month, day, instance.university_name, instance.name)
-    #         else:
-    #             return '%s/%s/%s/%s/%s/%s/%s' % (
-    #                 'handout', instance.title, year, month, day, instance.university_name, instance.name)
     return '%s/%s/%s/%s/%s' % ('article', year, month, day, filename)
 
 
@@ -73,3 +55,11 @@ class Article(models.Model):
         return cls.objects.filter(is_confirmed=False)
 
     objects = ArticleManager()
+
+
+@receiver(signal=post_delete)
+def delete_from_admin(**kwargs):
+    ins = kwargs['instance']
+    if isinstance(ins, Article):
+        if ins.file:
+            ins.file.delete(False)

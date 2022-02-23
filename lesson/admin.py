@@ -12,6 +12,19 @@ class LessonAdmin(admin.ModelAdmin):
     ]
     list_display = ['name', 'title', 'university_name', 'create', 'update', 'id']
 
+    def get_model_perms(self, request):
+        print(super(LessonAdmin, self).get_model_perms(request))
+        return super(LessonAdmin, self).get_model_perms(request)
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 class HandoutAdmin(admin.ModelAdmin):
     fieldsets = [

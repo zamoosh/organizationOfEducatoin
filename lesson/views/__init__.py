@@ -6,3 +6,4 @@ from .detail_lesson import detail_lesson
 from .test import test
 from .test_render import test_render
 from .index import index
+from .see_secret import see_secret

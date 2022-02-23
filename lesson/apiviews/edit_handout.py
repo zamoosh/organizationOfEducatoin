@@ -8,7 +8,7 @@ class EditHandout(RetrieveUpdateDestroyAPIView):
         return Response(HandoutSerializer2(handout, context=context).data, status=HTTP_200_OK)
 
     def put(self, request, *args, **kwargs):
-        if request.method == 'PUT':
+        if request.method == 'PUT' or request.method == 'PATCH':
             handout = Handout.objects.get(id=kwargs['pk'])
             handout.lesson = Lesson.objects.get(id=request.data.get('lesson'))
             handout.title = request.data.get('title')
@@ -21,14 +21,7 @@ class EditHandout(RetrieveUpdateDestroyAPIView):
             return Response(HandoutSerializer2(handout, context=context).data, status=HTTP_200_OK)
 
     def partial_update(self, request, *args, **kwargs):
-        if request.method == 'PATCH':
-            handout = Handout.objects.get(id=kwargs['pk'])
-            handout.title = request.data.get('title')
-            handout.description = request.data.get('description')
-            handout.author = request.data.get('author')
-            context = {'request': request}
-            handout.save()
-            return Response(HandoutSerializer(handout, context=context).data, status=HTTP_200_OK)
+        return self.put(request, *args, **kwargs)
 
     serializer_class = HandoutSerializer
     permission_classes = [IsAdminUser]
